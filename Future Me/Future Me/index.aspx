@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="index.aspx.cs" Inherits="Future_Me_index" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="index.aspx.cs" Inherits="Future_Me.index" %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -62,7 +62,7 @@
                         <div class="form-group">
                             <asp:Label ID="Label1" runat="server" Text="To Email" CssClass="col-lg-2 control-label"></asp:Label>
                             <div class="col-lg-10">
-                                <asp:TextBox ID="TextBox1" runat="server" placeholder="Email" CssClass="form-control"></asp:TextBox>
+                                <asp:TextBox ID="tbEmail" runat="server" placeholder="Email" CssClass="form-control"></asp:TextBox>
                             </div>
                         </div>
                         
@@ -89,7 +89,7 @@
 
                         <div class="form-group">
                             <div class="col-lg-10 col-lg-offset-2">
-                                <asp:Button ID="btnSubmit" runat="server" CssClass="btn btn-primary" Text="Submit" />
+                                <asp:Button ID="btnSubmit" runat="server" CssClass="btn btn-primary" Text="Submit" OnClick="btnSend_Click"/>
                                   <asp:Button ID="btnCancel" runat="server" CssClass="btn btn-warning" Text="Cancel" />                              
                             </div>
                         </div>
@@ -107,8 +107,6 @@
             $("#txtDate").datepicker({
                 changeMonth: true,
                 changeYear: true,
-                currentText: "Now",
-                defaultDate: +7
             });
         });
        </script>
@@ -136,3 +134,4 @@
     </form>
 </body>
 </html>
+
