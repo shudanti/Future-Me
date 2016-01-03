@@ -21,8 +21,10 @@
     <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css" />
     <link href="css/style.css" rel="stylesheet" type="text/css" />
     <link href="css/font-awesome.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css"/>
 </head>
 <body>
+    
     <form id="form1" runat="server">
     <div id="custom-bootstrap-menu" class="navbar navbar-default " role="navigation">
         <div class="container">
@@ -63,47 +65,28 @@
                                 <asp:TextBox ID="TextBox1" runat="server" placeholder="Email" CssClass="form-control"></asp:TextBox>
                             </div>
                         </div>
+                        
                         <div class="form-group">
                             <asp:Label ID="Label2" runat="server" Text="Subject" CssClass="col-lg-2 control-label"></asp:Label>
                             <div class="col-lg-10">
-                                <asp:TextBox ID="TextBox2" runat="server" placeholder="Subject" CssClass="form-control"
+                                <asp:TextBox ID="tbSubject" runat="server" placeholder="Subject" CssClass="form-control"
                                     ></asp:TextBox>
-                                <div class="checkbox">
-                                    <label>
-                                        <asp:CheckBox ID="CheckBox1" runat="server" Text="Remember Me" />
-                                    </label>
-                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <asp:Label ID="Label6" runat="server" Text="Your Letter" CssClass="col-lg-2 control-label"></asp:Label>
+                            <div class="col-lg-10">
+                                <asp:TextBox ID="tbLetter" runat="server" Text="Dear me in Future," CssClass="form-control" Rows="3" TextMode="MultiLine"></asp:TextBox>
                             </div>
                         </div>
                         <div class="form-group">
-                            <asp:Label ID="Label3" runat="server" Text="Address" CssClass="col-lg-2 control-label"></asp:Label>
+                            <asp:Label ID="Label3" runat="server" Text="On date" CssClass="col-lg-2 control-label"></asp:Label>
                             <div class="col-lg-10">
-                                <asp:TextBox ID="TextBox3" runat="server" TextMode="MultiLine" Rows="3" CssClass="form-control"></asp:TextBox>
+                                <asp:TextBox ID="txtDate" runat="server" CssClass="form-control"></asp:TextBox>
                             </div>
                         </div>
-                        <div class="form-group">
-                            <asp:Label ID="Label4" runat="server" Text="Gender" CssClass="col-lg-2 control-label"></asp:Label>
-                            <div class="col-lg-10">
-                                <div class="radio">
-                                    <label>
-                                        <asp:RadioButtonList ID="RadioButtonList1" runat="server">
-                                            <asp:ListItem Selected="True">Male</asp:ListItem>
-                                            <asp:ListItem>Female</asp:ListItem>
-                                        </asp:RadioButtonList>
-                                    </label>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                          <asp:Label ID="Label5" runat="server" Text="Country" CssClass="col-lg-2 control-label"></asp:Label>                          
-                            <div class="col-lg-10">
-                                <asp:DropDownList ID="DropDownList1" runat="server" CssClass="form-control ddl">
-                                    <asp:ListItem>INDIA</asp:ListItem>
-                                    <asp:ListItem>USA</asp:ListItem>
-                                    <asp:ListItem>UK</asp:ListItem>
-                                </asp:DropDownList>                              
-                            </div>
-                        </div>
+
                         <div class="form-group">
                             <div class="col-lg-10 col-lg-offset-2">
                                 <asp:Button ID="btnSubmit" runat="server" CssClass="btn btn-primary" Text="Submit" />
@@ -118,6 +101,17 @@
     <script src="js/jquery.js" type="text/javascript"></script>
     <script src="js/bootstrap.min.js" type="text/javascript"></script>
     <script src="js/jquery.backstretch.js" type="text/javascript"></script>
+    <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js" type="text/javascript"></script>
+    <script type="text/javascript">
+        $(function () {
+            $("#txtDate").datepicker({
+                changeMonth: true,
+                changeYear: true,
+                currentText: "Now",
+                defaultDate: +7
+            });
+        });
+       </script>
     <script type="text/javascript">
         'use strict';
 

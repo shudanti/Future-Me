@@ -176,3 +176,14 @@ input[type="text"]:-moz-placeholder, textarea:-moz-placeholder, textarea.form-co
 }
 input[type="text"]:-ms-input-placeholder, textarea:-ms-input-placeholder, textarea.form-control:-ms-input-placeholder { color: #999999; }
 input[type="text"]::-webkit-input-placeholder, textarea::-webkit-input-placeholder, textarea.form-control::-webkit-input-placeholder { color: #999999; }
+
+#ui-datepicker-div {
+    background: rgba(0, 0, 0, 0.6);
+}
+#ui-datepicker-div .ui-datepicker-calendar span{
+     color: white;
+}
+
+#ui-datepicker-div select{
+     color: black;
+}
