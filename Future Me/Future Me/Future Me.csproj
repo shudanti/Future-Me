@@ -83,6 +83,7 @@
     <Content Include="img\clk2.png" />
     <Content Include="img\colorful.jpg" />
     <Content Include="img\images.jpg" />
+    <Content Include="register.aspx" />
     <Content Include="index.aspx" />
     <Content Include="js\bootstrap.min.js" />
     <Content Include="js\jquery.backstretch.js" />
@@ -94,6 +95,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="register.aspx.cs">
+      <DependentUpon>register.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
     <Compile Include="index.aspx.cs">
       <DependentUpon>index.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
