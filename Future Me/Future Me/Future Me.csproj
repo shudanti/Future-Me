@@ -84,13 +84,16 @@
     <Content Include="img\colorful.jpg" />
     <Content Include="img\images.jpg" />
     <Content Include="index.aspx" />
+    <Content Include="js\angular.min.js" />
+    <Content Include="js\angularScript.js" />
     <Content Include="js\bootstrap.min.js" />
     <Content Include="js\jquery.backstretch.js" />
     <Content Include="js\jquery.js" />
     <Content Include="Global.asax" />
-    <Content Include="index1.aspx" />
     <Content Include="joined.html" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\WebApiConfig.cs" />
@@ -100,10 +103,6 @@
     </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
-    </Compile>
-    <Compile Include="index1.aspx.cs">
-      <DependentUpon>index1.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
