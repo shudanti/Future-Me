@@ -7,4 +7,8 @@ using System.Web.UI.WebControls;
 
 public partial class preview_dotnet_templates_registration_Form_index : System.Web.UI.Page
 {
+    protected void Page_Load(object sender, EventArgs e)
+    {
+
+    }
 }
