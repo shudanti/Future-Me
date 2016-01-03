@@ -1,7 +1,7 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="index.aspx.cs" Inherits="Future_Me_index" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="register.aspx.cs" Inherits="registration_Form" %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" ng-app="myApp">
+<html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <!--[if lt IE 7]> <html class="no-js ie6 oldie" lang="en"> <![endif]-->
     <!--[if IE 7]>    <html class="no-js ie7 oldie" lang="en"> <![endif]-->
@@ -11,7 +11,7 @@
     <!-- Set the viewport width to device width for mobile -->
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <meta name="description" content="Coming soon, Bootstrap, Bootstrap 3.0, Free Coming Soon, free coming soon, free template, coming soon template, Html template, html template, html5, Code lab, codelab, codelab coming soon template, bootstrap coming soon template">
-    <title>Email2Future</title>
+    <title>Bootstrap Templates</title>
     <!-- ============ Google fonts ============ -->
     <link href='http://fonts.googleapis.com/css?family=EB+Garamond' rel='stylesheet'
         type='text/css' />
@@ -22,12 +22,12 @@
     <link href="css/style.css" rel="stylesheet" type="text/css" />
     <link href="css/font-awesome.css" rel="stylesheet" type="text/css" />
 </head>
-<body ng-controller="stageController">
-    <form id="myForm" runat="server" name="myForm">
+<body>
+    <form id="form1" runat="server">
     <div id="custom-bootstrap-menu" class="navbar navbar-default " role="navigation">
         <div class="container">
             <div class="navbar-header">
-                <a class="navbar-brand" href="#">Email2Future</a>
+                <a class="navbar-brand" href="#">Bootstrap</a>
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-menubuilder">
                     <span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span
                         class="icon-bar"></span><span class="icon-bar"></span>
@@ -47,9 +47,9 @@
         <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 text-center">
             <div id="banner">
                 <h1>
-                    Send emails to yourself or your friends/family in the future</h1>
-<%--                <h5>
-                    <strong>aspxtemplates.com</strong></h5>--%>
+                    Bootstrap <strong>Registration Form</strong> for .net developers</h1>
+                <h5>
+                    <strong>aspxtemplates.com</strong></h5>
             </div>
         </div>
         <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
@@ -60,45 +60,28 @@
                         <div class="form-group">
                             <asp:Label ID="Label1" runat="server" Text="Email" CssClass="col-lg-2 control-label"></asp:Label>
                             <div class="col-lg-10">
-                                <asp:TextBox ID="email" runat="server" placeholder="Email" CssClass="form-control"></asp:TextBox>
+                                <asp:TextBox ID="TextBox1" runat="server" placeholder="Email" CssClass="form-control"></asp:TextBox>
                             </div>
                         </div>
                         <div class="form-group">
                             <asp:Label ID="Label2" runat="server" Text="Password" CssClass="col-lg-2 control-label"></asp:Label>
                             <div class="col-lg-10">
-                                <asp:TextBox ID="pw1" runat="server" placeholder="Password" CssClass="form-control" name="pw1" ng-model ="pw1" ng-required=""
+                                <asp:TextBox ID="TextBox2" runat="server" placeholder="Password" CssClass="form-control"
                                     TextMode="Password"></asp:TextBox>
-<%--                                <div class="checkbox">
+                                <div class="checkbox">
                                     <label>
                                         <asp:CheckBox ID="CheckBox1" runat="server" Text="Remember Me" />
                                     </label>
-                                </div>--%>
+                                </div>
                             </div>
                         </div>
                         <div class="form-group">
-                            <asp:Label ID="Label6" runat="server" Text="Re-type Password" CssClass="col-lg-2 control-label"></asp:Label>
-                            <div class="col-lg-10">
-                                <asp:TextBox ID="pw2" runat="server" placeholder="Re-type Password" CssClass="form-control" name="pw2" ng-model ="pw2" ng-required="" pw-check="pw1"
-                                    TextMode="Password"></asp:TextBox>
-<%--                                <div class="checkbox">
-                                    <label>
-                                        <asp:CheckBox ID="CheckBox2" runat="server" Text="Remember Me" />
-                                    </label>
-                                </div>--%>
-                            </div>
-                         </div>
-                        <div ng-show="myForm.$error">
-                            <span ng-show="myForm.pw2.$error.pwmatch">
-                            Passwords don't match.
-                            </span>
-                        </div>
-<%--                        <div class="form-group">
                             <asp:Label ID="Label3" runat="server" Text="Address" CssClass="col-lg-2 control-label"></asp:Label>
                             <div class="col-lg-10">
                                 <asp:TextBox ID="TextBox3" runat="server" TextMode="MultiLine" Rows="3" CssClass="form-control"></asp:TextBox>
                             </div>
-                        </div>--%>
-<%--                        <div class="form-group">
+                        </div>
+                        <div class="form-group">
                             <asp:Label ID="Label4" runat="server" Text="Gender" CssClass="col-lg-2 control-label"></asp:Label>
                             <div class="col-lg-10">
                                 <div class="radio">
@@ -110,8 +93,8 @@
                                     </label>
                                 </div>
                             </div>
-                        </div>--%>
-<%--                        <div class="form-group">
+                        </div>
+                        <div class="form-group">
                           <asp:Label ID="Label5" runat="server" Text="Country" CssClass="col-lg-2 control-label"></asp:Label>                          
                             <div class="col-lg-10">
                                 <asp:DropDownList ID="DropDownList1" runat="server" CssClass="form-control ddl">
@@ -120,7 +103,7 @@
                                     <asp:ListItem>UK</asp:ListItem>
                                 </asp:DropDownList>                              
                             </div>
-                        </div>--%>
+                        </div>
                         <div class="form-group">
                             <div class="col-lg-10 col-lg-offset-2">
                                 <asp:Button ID="btnSubmit" runat="server" CssClass="btn btn-primary" Text="Submit" />
@@ -135,8 +118,6 @@
     <script src="js/jquery.js" type="text/javascript"></script>
     <script src="js/bootstrap.min.js" type="text/javascript"></script>
     <script src="js/jquery.backstretch.js" type="text/javascript"></script>
-    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.0.6/angular.min.js" type="text/javascript"></script>
-    <script src="js/angularScript.js" type="text/javascript"></script>
     <script type="text/javascript">
         'use strict';
 
