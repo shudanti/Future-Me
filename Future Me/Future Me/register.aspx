@@ -23,7 +23,7 @@
     <link href="css/font-awesome.css" rel="stylesheet" type="text/css" />
 </head>
 <body ng-controller="stageController">
-    <form id="myForm" runat="server" name="myForm">
+    <form id="myForm" runat="server">
     <div id="custom-bootstrap-menu" class="navbar navbar-default " role="navigation">
         <div class="container">
             <div class="navbar-header">
@@ -87,8 +87,8 @@
                                 </div>--%>
                             </div>
                          </div>
-                        <div ng-show="myForm.$error">
-                            <span ng-show="myForm.pw2.$error.pwmatch">
+                        <div ng-show="isMatch">
+                            <span ng-show="isMatch">
                             Passwords don't match.
                             </span>
                         </div>
@@ -159,5 +159,6 @@
     );
     </script>
     </form>
+    
 </body>
 </html>

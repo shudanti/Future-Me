@@ -4,7 +4,7 @@ angular
     .controller("stageController", stageController);
 /* Controllers */
 function stageController($scope) {
-    $scope.pw1 = 'pass';
+    $scope.pw1 = '';
 }
 /* Directives */
 angular.module('myApp.directives', [])
@@ -15,12 +15,7 @@ angular.module('myApp.directives', [])
                 var firstPassword = '#' + attrs.pwCheck;
                 elem.add(firstPassword).on('keyup', function () {
                     scope.$apply(function () {
-                        // console.info(elem.val() === $(firstPassword).val());
-                        //console.info(elem.val());
-                        console.info(elem.val() === scope[attrs.pwCheck]);
-
-                        ctrl.$setValidity('pwmatch', elem.val() === scope[attrs.pwCheck]);
-                        //scope.$apply();
+                        scope.isMatch = elem.val() !== scope[attrs.pwCheck];
                     });
                 });
             }
