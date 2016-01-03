@@ -72,18 +72,49 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App_Themes\ClockTheme\registration Form\css\bootstrap.min.css" />
+    <Content Include="App_Themes\ClockTheme\registration Form\css\font-awesome.css" />
+    <Content Include="App_Themes\ClockTheme\registration Form\css\font-awesome.min.css" />
+    <Content Include="App_Themes\ClockTheme\registration Form\css\style.css" />
+    <Content Include="App_Themes\ClockTheme\registration Form\fonts\fontawesome-webfont.svg" />
+    <Content Include="App_Themes\ClockTheme\registration Form\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="App_Themes\ClockTheme\registration Form\img\34.jpg" />
+    <Content Include="App_Themes\ClockTheme\registration Form\img\44.jpg" />
+    <Content Include="App_Themes\ClockTheme\registration Form\img\clk2.png" />
+    <Content Include="App_Themes\ClockTheme\registration Form\img\colorful.jpg" />
+    <Content Include="App_Themes\ClockTheme\registration Form\img\images.jpg" />
+    <Content Include="App_Themes\ClockTheme\registration Form\index.aspx" />
+    <Content Include="App_Themes\ClockTheme\registration Form\js\bootstrap.min.js" />
+    <Content Include="App_Themes\ClockTheme\registration Form\js\jquery.backstretch.js" />
+    <Content Include="App_Themes\ClockTheme\registration Form\js\jquery.js" />
     <Content Include="Global.asax" />
+    <Content Include="index.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="App_Themes\ClockTheme\registration Form\index.aspx.cs">
+      <DependentUpon>index.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="index.aspx.cs">
+      <DependentUpon>index.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
+    <Content Include="App_Themes\ClockTheme\registration Form\fonts\fontawesome-webfont.eot" />
+    <Content Include="App_Themes\ClockTheme\registration Form\fonts\fontawesome-webfont.ttf" />
+    <Content Include="App_Themes\ClockTheme\registration Form\fonts\fontawesome-webfont.woff" />
+    <Content Include="App_Themes\ClockTheme\registration Form\fonts\FontAwesome.otf" />
+    <Content Include="App_Themes\ClockTheme\registration Form\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="App_Themes\ClockTheme\registration Form\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="App_Themes\ClockTheme\registration Form\fonts\glyphicons-halflings-regular.woff" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
