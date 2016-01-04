@@ -89,7 +89,7 @@
 
                         <div class="form-group">
                             <div class="col-lg-10 col-lg-offset-2">
-                                <asp:Button ID="btnSubmit" runat="server" CssClass="btn btn-primary" Text="Submit" OnClick="btnSend_Click"/>
+                                <asp:Button ID="btnSubmit" runat="server" CssClass="btn btn-primary" Text="Submit"/>
                                   <asp:Button ID="btnCancel" runat="server" CssClass="btn btn-warning" Text="Cancel" />                              
                             </div>
                         </div>
@@ -131,6 +131,33 @@
         }
     );
     </script>
+        <script type="text/javascript">
+            $("#form1").submit(function (e) {
+                var _IDUser = 1;
+                // get id user if is login
+                //var _IDUser = ;
+                var _email = $('#tbEmail').val();
+                var _Subject = $('#tbSubject').val();
+                var _Letter = $('#tbLetter').val();
+                var _DeliverOn = $('#txtDate').val();
+
+                var url = "addEmail"; // the script where you handle the form input.
+
+                $.ajax({
+                    type: "POST",
+                    url: url,
+                    data: { IDUser: _IDUser, EmailTo: _email, Subject: _Subject, Letter: _Letter, DeliverOn: _DeliverOn }, // serializes the form's elements.
+                    success: function (data) {
+                        alert("A letter is stored!"); // show response from the php script.
+                    },
+                    error: function (error) {
+                        alert("Error: Can not store you letter!");
+                    }
+                });
+
+                e.preventDefault(); // avoid to execute the actual submit of the form.
+            });
+        </script>
     </form>
 </body>
 </html>

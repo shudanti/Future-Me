@@ -20,7 +20,8 @@ namespace Future_Me.Models
         public string Subject { get; set; }
         public string Letter { get; set; }
         public System.DateTime DeliverOn { get; set; }
+        public int Status { get; set; }
     
-        public virtual USER USER { get; set; }
+        public virtual USER USER1 { get; set; }
     }
 }
