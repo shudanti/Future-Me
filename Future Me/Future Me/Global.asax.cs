@@ -36,8 +36,8 @@ namespace Future_Me
             {
                 try
                 {
-
-                    var ListMailsNotSend = ctx.MAILs.Where(x => x.Status == 0 && DbFunctions.TruncateTime(x.DeliverOn) == DateTime.Now.Date).ToList();
+                    DateTime now = DateTime.Now.Date;
+                    var ListMailsNotSend = ctx.MAILs.Where(x => x.Status == 0 && DbFunctions.TruncateTime(x.DeliverOn) == now).ToList();
                     if (ListMailsNotSend == null)
                     {
                         return;
@@ -47,6 +47,7 @@ namespace Future_Me
                     MailAddress from = new MailAddress("shudantini@gmail.com", "Send2Future");
                     foreach(MAIL mail in ListMailsNotSend)
                     {
+                        int status = mail.Status; // = 0
                         try
                         {
                             MailMessage email = new MailMessage();
@@ -62,11 +63,17 @@ namespace Future_Me
                             email.IsBodyHtml = true;
 
                             mySmtpClient.Send(email);
+                            status = 1; // send
                         }
                         catch (SmtpException ex)
                         {
+                            status = 3; // send error
                             throw new ApplicationException("SmtpException has occured: " + ex.Message);
                         }
+
+                        mail.Status = status;
+
+                        int affected = ctx.SaveChanges();
                     }
                 }
                 catch (Exception ex)
