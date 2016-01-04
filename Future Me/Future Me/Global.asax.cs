@@ -1,6 +1,7 @@
 ﻿using Future_Me.Models;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Net.Mail;
 using System.Web;
@@ -36,7 +37,7 @@ namespace Future_Me
                 try
                 {
 
-                    var ListMailsNotSend = ctx.MAILs.Where(x => x.Status == 0 && x.DeliverOn.Date == DateTime.Now.Date).ToList();
+                    var ListMailsNotSend = ctx.MAILs.Where(x => x.Status == 0 && DbFunctions.TruncateTime(x.DeliverOn) == DateTime.Now.Date).ToList();
                     if (ListMailsNotSend == null)
                     {
                         return;
@@ -46,24 +47,27 @@ namespace Future_Me
                     MailAddress from = new MailAddress("shudantini@gmail.com", "Send2Future");
                     foreach(MAIL mail in ListMailsNotSend)
                     {
-                        MailMessage email = new MailMessage();
-                        email.From = from;
-                        email.To.Add(mail.EmailTo.Trim());
-                        email.Subject = mail.Subject.Trim();
-                        email.SubjectEncoding = System.Text.Encoding.UTF8;
+                        try
+                        {
+                            MailMessage email = new MailMessage();
+                            email.From = from;
+                            email.To.Add(mail.EmailTo.Trim());
+                            email.Subject = mail.Subject.Trim();
+                            email.SubjectEncoding = System.Text.Encoding.UTF8;
 
-                        // set body-message and encoding
-                        email.Body = mail.Letter.Trim();
-                        email.BodyEncoding = System.Text.Encoding.UTF8;
-                        // text or html
-                        email.IsBodyHtml = true;
+                            // set body-message and encoding
+                            email.Body = mail.Letter.Trim();
+                            email.BodyEncoding = System.Text.Encoding.UTF8;
+                            // text or html
+                            email.IsBodyHtml = true;
 
-                        mySmtpClient.Send(email);
+                            mySmtpClient.Send(email);
+                        }
+                        catch (SmtpException ex)
+                        {
+                            throw new ApplicationException("SmtpException has occured: " + ex.Message);
+                        }
                     }
-                }
-                catch (SmtpException ex)
-                {
-                    throw new ApplicationException("SmtpException has occured: " + ex.Message);
                 }
                 catch (Exception ex)
                 {
