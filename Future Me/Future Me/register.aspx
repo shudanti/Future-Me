@@ -2,6 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" ng-app="myApp">
 <head runat="server">
     <!--#include file="header.html"-->
+    <%@ Page Language="C#" AutoEventWireup="true" CodeBehind="register.aspx.cs" Inherits="Future_Me.register" %>
     <title>Email2Future</title>
 </head>
 
@@ -38,10 +39,10 @@
                             <asp:Label ID="Label8" runat="server" Text="Re-type Password" CssClass="col-lg-2 control-label"></asp:Label>
                             <div class="col-lg-10">
                                 <asp:TextBox ID="pw2" name="pw2" runat="server" placeholder="Re-type Password" CssClass="form-control" TextMode="Password"
-                                    ng-model="pw2" required
+                                    ng-model="pw2" pw-check="pw1" required
                                 ></asp:TextBox>
-                                <div class="msg-block" ng-show="angular.element(document.querySelector('#myForm')).$error"> 
-                                    <span class="msg-error" ng-show="angular.element(document.querySelector('#myForm')).pw2.$error.pwmatch">Passwords don't match.</span> 
+                                <div class="msg-block" ng-show="isMatch"> 
+                                    <span class="msg-error" ng-show="isMatch">Passwords don't match.</span> 
                                 </div>
                             </div>
                          </div>
