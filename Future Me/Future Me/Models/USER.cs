@@ -14,10 +14,15 @@ namespace Future_Me.Models
     
     public partial class USER
     {
+        public USER()
+        {
+            this.MAILs = new HashSet<MAIL>();
+        }
+    
         public int ID { get; set; }
         public string Email { get; set; }
         public string Password { get; set; }
     
-        public virtual MAIL MAIL { get; set; }
+        public virtual ICollection<MAIL> MAILs { get; set; }
     }
 }

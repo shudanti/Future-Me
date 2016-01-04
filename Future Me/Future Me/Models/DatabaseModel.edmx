@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="FutureMeProductModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="FutureMeProductModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="MAIL">
           <Key>
             <PropertyRef Name="ID" />
@@ -13,8 +13,9 @@
           <Property Name="IDUser" Type="int" Nullable="false" />
           <Property Name="EmailTo" Type="varchar" MaxLength="255" Nullable="false" />
           <Property Name="Subject" Type="varchar" MaxLength="255" Nullable="false" />
-          <Property Name="Letter" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="Letter" Type="text" Nullable="false" />
           <Property Name="DeliverOn" Type="datetime" Nullable="false" />
+          <Property Name="Status" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="USERS">
           <Key>
@@ -24,28 +25,27 @@
           <Property Name="Email" Type="varchar" MaxLength="255" Nullable="false" />
           <Property Name="Password" Type="varchar" MaxLength="255" Nullable="false" />
         </EntityType>
-        <Association Name="FK__MAIL__ID__09DE7BCC">
+        <Association Name="FK__MAIL__IDUser__1FCDBCEB">
           <End Role="USERS" Type="Self.USERS" Multiplicity="1" />
-          <End Role="MAIL" Type="Self.MAIL" Multiplicity="0..1" />
+          <End Role="MAIL" Type="Self.MAIL" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="USERS">
               <PropertyRef Name="ID" />
             </Principal>
             <Dependent Role="MAIL">
-              <PropertyRef Name="ID" />
+              <PropertyRef Name="IDUser" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <EntityContainer Name="FutureMeProductModelStoreContainer">
           <EntitySet Name="MAIL" EntityType="Self.MAIL" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="USERS" EntityType="Self.USERS" Schema="dbo" store:Type="Tables" />
-          <AssociationSet Name="FK__MAIL__ID__09DE7BCC" Association="Self.FK__MAIL__ID__09DE7BCC">
+          <AssociationSet Name="FK__MAIL__IDUser__1FCDBCEB" Association="Self.FK__MAIL__IDUser__1FCDBCEB">
             <End Role="USERS" EntitySet="USERS" />
             <End Role="MAIL" EntitySet="MAIL" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="FutureMeProductModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -57,9 +57,10 @@
           <Property Name="IDUser" Type="Int32" Nullable="false" />
           <Property Name="EmailTo" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Subject" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="Letter" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Letter" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="DeliverOn" Type="DateTime" Nullable="false" Precision="3" />
-          <NavigationProperty Name="USER" Relationship="Self.FK__MAIL__ID__09DE7BCC" FromRole="MAIL" ToRole="USERS" />
+          <NavigationProperty Name="USER1" Relationship="FutureMeProductModel.FK__MAIL__IDUser__1273C1CD" FromRole="MAIL" ToRole="USER" />
+          <Property Name="Status" Type="Int32" Nullable="false" />
         </EntityType>
         <EntityType Name="USER">
           <Key>
@@ -68,28 +69,28 @@
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Email" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Password" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
-          <NavigationProperty Name="MAIL" Relationship="Self.FK__MAIL__ID__09DE7BCC" FromRole="USERS" ToRole="MAIL" />
+          <NavigationProperty Name="MAILs" Relationship="FutureMeProductModel.FK__MAIL__IDUser__1273C1CD" FromRole="USER" ToRole="MAIL" />
         </EntityType>
-        <Association Name="FK__MAIL__ID__09DE7BCC">
-          <End Role="USERS" Type="Self.USER" Multiplicity="1" />
-          <End Role="MAIL" Type="Self.MAIL" Multiplicity="0..1" />
-          <ReferentialConstraint>
-            <Principal Role="USERS">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="MAIL">
-              <PropertyRef Name="ID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <EntityContainer Name="FutureMeProductEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="MAILs" EntityType="Self.MAIL" />
           <EntitySet Name="USERS" EntityType="Self.USER" />
-          <AssociationSet Name="FK__MAIL__ID__09DE7BCC" Association="Self.FK__MAIL__ID__09DE7BCC">
-            <End Role="USERS" EntitySet="USERS" />
+          <AssociationSet Name="FK__MAIL__IDUser__1273C1CD" Association="FutureMeProductModel.FK__MAIL__IDUser__1273C1CD">
+            <End Role="USER" EntitySet="USERS" />
             <End Role="MAIL" EntitySet="MAILs" />
           </AssociationSet>
         </EntityContainer>
+        <Association Name="FK__MAIL__IDUser__1273C1CD">
+          <End Type="FutureMeProductModel.USER" Role="USER" Multiplicity="1" />
+          <End Type="FutureMeProductModel.MAIL" Role="MAIL" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="USER">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="MAIL">
+              <PropertyRef Name="IDUser" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -99,6 +100,7 @@
           <EntitySetMapping Name="MAILs">
             <EntityTypeMapping TypeName="FutureMeProductModel.MAIL">
               <MappingFragment StoreEntitySet="MAIL">
+                <ScalarProperty Name="Status" ColumnName="Status" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="IDUser" ColumnName="IDUser" />
                 <ScalarProperty Name="EmailTo" ColumnName="EmailTo" />

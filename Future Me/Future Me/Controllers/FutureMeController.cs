@@ -23,7 +23,7 @@ namespace Future_Me.Models
         [AcceptVerbs("POST", "OPTIONS")]
         [HttpPost]
         [Route("addEmail")]
-        public HttpResponseMessage addEmail([FromBody] int userid, [FromBody] MAIL mailData)
+        public HttpResponseMessage addEmail([FromBody] MAIL mailData)
         {
             using (FutureMeProductEntities ctx = new FutureMeProductEntities())
             {
@@ -35,6 +35,7 @@ namespace Future_Me.Models
                     mail.Subject = mailData.Subject;
                     mail.Letter = mailData.Letter;
                     mail.DeliverOn = mailData.DeliverOn;
+                    mail.Status = 0; // Store mail, not send yet
                     ctx.MAILs.Add(mail);
                     ctx.SaveChanges();
                     return Request.CreateResponse(HttpStatusCode.OK);
