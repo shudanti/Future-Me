@@ -99,11 +99,13 @@
     <Content Include="css\style.css" />
     <Content Include="fonts\fontawesome-webfont.svg" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="footer.html" />
     <Content Include="img\34.jpg" />
     <Content Include="img\44.jpg" />
     <Content Include="img\clk2.png" />
     <Content Include="img\colorful.jpg" />
     <Content Include="img\images.jpg" />
+    <Content Include="header.html" />
     <Content Include="Models\DatabaseModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>DatabaseModel.edmx</DependentUpon>
@@ -123,6 +125,7 @@
     <Content Include="Global.asax" />
     <Content Include="joined.html" />
     <Content Include="register.aspx" />
+    <Content Include="topbar.html" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>

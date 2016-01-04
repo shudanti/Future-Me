@@ -1,11 +1,9 @@
 ﻿'use strict';
-angular
-    .module('myApp', ['myApp.directives'])
-    .controller("stageController", stageController);
+angular.module('myApp', ['myApp.directives']);
 /* Controllers */
-function stageController($scope) {
-    $scope.pw1 = 'pass';
-}
+//function stageController($scope) {
+//    $scope.pw1 = 'password';
+//}
 /* Directives */
 angular.module('myApp.directives', [])
     .directive('pwCheck', [function () {
@@ -16,11 +14,7 @@ angular.module('myApp.directives', [])
                 elem.add(firstPassword).on('keyup', function () {
                     scope.$apply(function () {
                         // console.info(elem.val() === $(firstPassword).val());
-                        //console.info(elem.val());
-                        console.info(elem.val() === scope[attrs.pwCheck]);
-
-                        ctrl.$setValidity('pwmatch', elem.val() === scope[attrs.pwCheck]);
-                        //scope.$apply();
+                        ctrl.$setValidity('pwmatch', elem.val() === $(firstPassword).val());
                     });
                 });
             }
