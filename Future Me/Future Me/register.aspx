@@ -57,10 +57,7 @@
             </div>
         </div>
     </div>
-    
+    <!--#include file="footer.html"-->
     </form>
 </body>
-<footer>
-    <!--#include file="footer.html"-->
-</footer>
 </html>

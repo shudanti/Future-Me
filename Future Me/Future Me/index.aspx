@@ -1,23 +1,20 @@
-﻿
-
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="index.aspx.cs" Inherits="Future_Me.index" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <!--#include file="header.html"-->
-    <%@ Page Language="C#" AutoEventWireup="true" CodeBehind="index.aspx.cs" Inherits="Future_Me.index" %>
+    
     <title>Email2Future</title>
 </head>
 <body>
     
     <form id="form1" runat="server">
     <!--#include file="topbar.html"-->
-    <div class="container">
+<div class="container">
         <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 text-center">
             <div id="banner">
                 <h1>
-                    Bootstrap <strong>Registration Form</strong> for .net developers</h1>
-                <h5>
-                    <strong>aspxtemplates.com</strong></h5>
+                    Send emails to yourself or your friends/family in the future</h1>
             </div>
         </div>
         <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
@@ -64,11 +61,44 @@
             </div>
         </div>
     </div>
-    
+    <!--#include file="footer.html"-->
+    <script type="text/javascript">
+        $("#form1").submit(function (e) {
+            var _IDUser = 1;
+            // get id user if is login
+            //var _IDUser = ;
+            var _email = $('#tbEmail').val();
+            var _Subject = $('#tbSubject').val();
+            var _Letter = $('#tbLetter').val();
+            var _DeliverOn = $('#txtDate').val();
+
+            var url = "addEmail"; // the script where you handle the form input.
+
+            $.ajax({
+                type: "POST",
+                url: url,
+                data: { IDUser: _IDUser, EmailTo: _email, Subject: _Subject, Letter: _Letter, DeliverOn: _DeliverOn }, // serializes the form's elements.
+                success: function (data) {
+                    alert("A letter is stored!"); // show response from the php script.
+                },
+                error: function (error) {
+                    alert("Error: Can not store you letter!");
+                }
+            });
+
+            e.preventDefault(); // avoid to execute the actual submit of the form.
+        });
+    </script>
+    <script type="text/javascript">
+        $(function () {
+            $("#txtDate").datepicker({
+                changeMonth: true,
+                changeYear: true,
+            });
+        });
+    </script>
     </form>
 </body>
-<footer>
-<!--#include file="footer.html"-->
-</footer>
+
 </html>
 
