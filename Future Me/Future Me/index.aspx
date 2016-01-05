@@ -80,6 +80,7 @@
                 data: { IDUser: _IDUser, EmailTo: _email, Subject: _Subject, Letter: _Letter, DeliverOn: _DeliverOn }, // serializes the form's elements.
                 success: function (data) {
                     alert("A letter is stored!"); // show response from the php script.
+                    window.location.href = "index.aspx";
                 },
                 error: function (error) {
                     alert("Error: Can not store you letter!");
