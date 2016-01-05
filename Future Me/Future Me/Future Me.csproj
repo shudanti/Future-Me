@@ -99,13 +99,13 @@
     <Content Include="css\style.css" />
     <Content Include="fonts\fontawesome-webfont.svg" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
-    <Content Include="footer.html" />
+    <Content Include="footer.aspx" />
     <Content Include="img\34.jpg" />
     <Content Include="img\44.jpg" />
     <Content Include="img\clk2.png" />
     <Content Include="img\colorful.jpg" />
     <Content Include="img\images.jpg" />
-    <Content Include="header.html" />
+    <Content Include="header.aspx" />
     <Content Include="Models\DatabaseModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>DatabaseModel.edmx</DependentUpon>
@@ -123,10 +123,12 @@
     <Content Include="js\jquery.backstretch.js" />
     <Content Include="js\jquery.js" />
     <Content Include="Global.asax" />
-    <Content Include="joined.html" />
+    <Content Include="joined.aspx" />
     <Content Include="register.aspx" />
     <Content Include="signin.aspx" />
-    <Content Include="topbar.html" />
+    <Content Include="signinprocess.aspx" />
+    <Content Include="signout.aspx" />
+    <Content Include="topbar.aspx" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -176,6 +178,20 @@
     </Compile>
     <Compile Include="signin.aspx.designer.cs">
       <DependentUpon>signin.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="signinprocess.aspx.cs">
+      <DependentUpon>signinprocess.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="signinprocess.aspx.designer.cs">
+      <DependentUpon>signinprocess.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="signout.aspx.cs">
+      <DependentUpon>signout.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="signout.aspx.designer.cs">
+      <DependentUpon>signout.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>

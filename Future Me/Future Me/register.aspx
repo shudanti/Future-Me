@@ -3,13 +3,13 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" >
 <head runat="server">
-    <!--#include file="header.html"-->
+    <!--#include file="header.aspx"-->
     <title>Email2Future</title>
 </head>
 
 <body ng-app="myApp" novalidate>
     <form id="myForm" name="myForm" runat="server">
-        <!--#include file="topbar.html"-->
+        <!--#include file="topbar.aspx"-->
         <div class="container">
             <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 text-center">
                 <div id="banner">
@@ -71,7 +71,7 @@
                 </div>
             </div>
         </div>
-        <!--#include file="footer.html"-->
+        <!--#include file="footer.aspx"-->
         <script type="text/javascript">
             $("#myForm").submit(function (e) {
                 var _IDUser = 1;

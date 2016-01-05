@@ -1,14 +1,16 @@
-﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="signin.aspx.cs" Inherits="Future_Me.signin" %>
+
+<!DOCTYPE html>
+
 <html xmlns="http://www.w3.org/1999/xhtml" ng-app="myApp">
 <head runat="server">
-    <!--#include file="header.html"-->
-    <%@ Page Language="C#" AutoEventWireup="true" CodeBehind="signin.aspx.cs" Inherits="Future_Me.signin" %>
+    <!--#include file="header.aspx"-->
     <title>Email2Future</title>
 </head>
 
 <body>
     <form id="myForm" name="myForm" runat="server">
-        <!--#include file="topbar.html"-->
+        <!--#include file="topbar.aspx"-->
         <div class="container">
             <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 text-center">
                 <div id="banner">
@@ -46,7 +48,10 @@
                 </div>
             </div>
         </div>
-        <!--#include file="footer.html"-->
+        <!--#include file="footer.aspx"-->
+        <asp:ScriptManager ID="ScriptManager1" 
+            EnablePageMethods="true" 
+            EnablePartialRendering="true" runat="server" />
         <script type="text/javascript">
             $("#myForm").submit(function (e) {
                 var _IDUser = 1;
@@ -60,10 +65,18 @@
                 $.ajax({
                     type: "POST",
                     url: url,
-                    data: { Email: _email, Password: _password}, // serializes the form's elements.
+                    data: { Email: _email, Password: _password }, // serializes the form's elements.
                     success: function (data) {
-                        <%-- <% FormsAuthentication.RedirectFromLoginPage("a", false);%> // show response from the php script.--%>
-                        alert("Sign in succeed!");
+                        //PageMethods.LoginMethod(data.Email);
+                        $.ajax({
+                            type: "POST",
+                            url: "signinprocess.aspx",
+                            data: { Email: data.Email }, // serializes the form's elements.
+                            success: function (data) {
+                                alert("Sign in succeed!");
+                                window.location.href = "index.aspx";
+                            }
+                        });
                     },
                     error: function (error) {
                         alert("Sign in failed!");

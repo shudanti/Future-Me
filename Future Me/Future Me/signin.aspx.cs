@@ -1,13 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Configuration;
-using System.Data;
-using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
-using System.Web.Security;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using System.Web.Services;
+using System.Web.Security;
 
 namespace Future_Me
 {
@@ -15,11 +13,22 @@ namespace Future_Me
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            if (this.Page.User.Identity.IsAuthenticated)
+            {
+                Response.Redirect("index.aspx");
+            }
         }
-        protected void ValidateUser(object sender, EventArgs e)
-        {
 
+        [WebMethod]
+        public static void LoginMethod(string user)
+        {
+            try
+            {
+                FormsAuthentication.RedirectFromLoginPage(user, false);
+            }catch(Exception e)
+            {
+
+            }
         }
     }
 }

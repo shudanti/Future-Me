@@ -12,6 +12,7 @@
                 <li><a href="/register.aspx">Sign up</a> </li>
                 <li><a href="/signin.aspx">Sign in</a> </li>
                 <li><a href="/contact">Contact Us</a> </li>
+                <li><a href="/signout.aspx">Sign Out</a> </li>
             </ul>
         </div>
     </div>
