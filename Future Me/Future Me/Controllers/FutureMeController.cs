@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
+using System.Net.Http.Formatting;
 using System.Web.Http;
 
 namespace Future_Me.Models
@@ -20,6 +21,24 @@ namespace Future_Me.Models
             }
         }
 
+        [AcceptVerbs("POST", "OPTIONS")]
+        [HttpPost]
+        [Route("signIn")]
+        public HttpResponseMessage signIn([FromBody] USER userData)
+        {
+            using (FutureMeProductEntities ctx = new FutureMeProductEntities())
+            {
+                var user = ctx.USERS.Where(x => x.Email == userData.Email && x.Password == userData.Password).FirstOrDefault();
+                if (user == null)
+                {
+                    return Request.CreateResponse(HttpStatusCode.BadRequest);
+                }
+                var returnUser = new USER();
+                returnUser.Email = user.Email;
+                returnUser.ID = user.ID;
+                return Request.CreateResponse(HttpStatusCode.OK, returnUser);
+            }
+        }
         [AcceptVerbs("POST", "OPTIONS")]
         [HttpPost]
         [Route("addEmail")]
