@@ -125,6 +125,7 @@
     <Content Include="Global.asax" />
     <Content Include="joined.html" />
     <Content Include="register.aspx" />
+    <Content Include="signin.aspx" />
     <Content Include="topbar.html" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
@@ -168,6 +169,13 @@
     </Compile>
     <Compile Include="register.aspx.designer.cs">
       <DependentUpon>register.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="signin.aspx.cs">
+      <DependentUpon>signin.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="signin.aspx.designer.cs">
+      <DependentUpon>signin.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>

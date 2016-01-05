@@ -17,6 +17,7 @@ namespace Future_Me
         protected void Application_Start()
         {
             GlobalConfiguration.Configure(WebApiConfig.Register);
+            GlobalConfiguration.Configuration.Formatters.JsonFormatter.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore;
             AddTask("DoStuff", 60);
         }
         private void AddTask(string name, int seconds)
