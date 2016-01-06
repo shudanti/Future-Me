@@ -23,7 +23,7 @@
                                     <th>On date</th>
                                     <th>Status</th>
                                     <th>View Status</th>
-                                    <th>Control</th>
+                                    <th>Edit/Delete</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -31,10 +31,27 @@
                                     <td>{{mail.EmailTo}}</td>
                                     <td>{{mail.Subject}}</td>
                                     <td>{{mail.Letter}}</td>
-                                    <td>{{mail.DeliverOn}}</td>
-                                    <td>{{mail.ViewStatus}}</td>
-                                    <td>{{mail.Status}}</td>
-                                    <td>{{mail.email}}</td>
+                                    <td>{{mail.DeliverOn | date:'dd-MM-yyyy'}}</td>
+                                    <td>
+                                        <div ng-switch on="mail.ViewStatus">
+                                            <span ng-switch-when="1">Can Edit</span>
+                                            <span ng-switch-when="2">Lock</span>
+                                            <span ng-switch-when="3">Hide</span>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div ng-switch on="mail.Status">
+                                            <span ng-switch-when="0">Waiting</span>
+                                            <span ng-switch-when="1">Sent</span>
+                                            <span ng-switch-when="2">Send Error</span>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div style="overflow: auto; width: 100%;">
+                                            <input id="btEdit" type="button" value="Edit" class="btn btn-primary" style="padding: 2px 3px;" />
+                                            <input id="btDelete" type="button" value="X" class="btn btn-danger" style="padding: 2px 8px;" />
+                                        </div>
+                                    </td>
                                 </tr>
                             </tbody>
                         </table>
@@ -43,11 +60,11 @@
             </div>
         </div>
         <!--#include file="footer.aspx"-->
-        
+
         <script type="text/javascript">
             'use strict';
             var _UserName = "<%= HttpContext.Current.User.Identity.Name %>";
-            
+
             managerApp.controller('mailsCtrl', function ($scope, $http) {
                 var user = { email: _UserName };
                 $http.post('getMailOf', user).success(function (data) {

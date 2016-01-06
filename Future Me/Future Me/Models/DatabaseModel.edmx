@@ -12,8 +12,8 @@
           <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="IDUser" Type="int" Nullable="false" />
           <Property Name="EmailTo" Type="varchar" MaxLength="255" Nullable="false" />
-          <Property Name="Subject" Type="varchar" MaxLength="255" Nullable="false" />
-          <Property Name="Letter" Type="text" Nullable="false" />
+          <Property Name="Subject" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="Letter" Type="ntext" Nullable="false" />
           <Property Name="DeliverOn" Type="datetime" Nullable="false" />
           <Property Name="Status" Type="int" Nullable="false" />
           <Property Name="ViewStatus" Type="int" Nullable="false" />
@@ -36,7 +36,7 @@
           <Property Name="Email" Type="varchar" MaxLength="255" Nullable="false" />
           <Property Name="Password" Type="varchar" MaxLength="255" Nullable="false" />
         </EntityType>
-        <Association Name="FK__MAIL__IDUser__619B8048">
+        <Association Name="FK__MAIL__IDUser__6D0D32F4">
           <End Role="USERS" Type="Self.USERS" Multiplicity="1" />
           <End Role="MAIL" Type="Self.MAIL" Multiplicity="*" />
           <ReferentialConstraint>
@@ -52,7 +52,7 @@
           <EntitySet Name="MAIL" EntityType="Self.MAIL" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="USERS" EntityType="Self.USERS" Schema="dbo" store:Type="Tables" />
-          <AssociationSet Name="FK__MAIL__IDUser__619B8048" Association="Self.FK__MAIL__IDUser__619B8048">
+          <AssociationSet Name="FK__MAIL__IDUser__6D0D32F4" Association="Self.FK__MAIL__IDUser__6D0D32F4">
             <End Role="USERS" EntitySet="USERS" />
             <End Role="MAIL" EntitySet="MAIL" />
           </AssociationSet>
@@ -65,7 +65,7 @@
           <EntitySet Name="MAILs" EntityType="FutureMeProductModel.MAIL" />
           <EntitySet Name="sysdiagrams" EntityType="FutureMeProductModel.sysdiagram" />
           <EntitySet Name="USERS" EntityType="FutureMeProductModel.USER" />
-          <AssociationSet Name="FK__MAIL__IDUser__619B8048" Association="FutureMeProductModel.FK__MAIL__IDUser__619B8048">
+          <AssociationSet Name="FK__MAIL__IDUser__6D0D32F4" Association="FutureMeProductModel.FK__MAIL__IDUser__6D0D32F4">
             <End Role="USER" EntitySet="USERS" />
             <End Role="MAIL" EntitySet="MAILs" />
           </AssociationSet>
@@ -77,12 +77,12 @@
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="IDUser" Type="Int32" Nullable="false" />
           <Property Name="EmailTo" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
-          <Property Name="Subject" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Subject" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
           <Property Name="Letter" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="DeliverOn" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="Status" Type="Int32" Nullable="false" />
           <Property Name="ViewStatus" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="USER" Relationship="FutureMeProductModel.FK__MAIL__IDUser__619B8048" FromRole="MAIL" ToRole="USER" />
+          <NavigationProperty Name="USER" Relationship="FutureMeProductModel.FK__MAIL__IDUser__6D0D32F4" FromRole="MAIL" ToRole="USER" />
         </EntityType>
         <EntityType Name="sysdiagram">
           <Key>
@@ -101,9 +101,9 @@
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Email" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
           <Property Name="Password" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="MAILs" Relationship="FutureMeProductModel.FK__MAIL__IDUser__619B8048" FromRole="USER" ToRole="MAIL" />
+          <NavigationProperty Name="MAILs" Relationship="FutureMeProductModel.FK__MAIL__IDUser__6D0D32F4" FromRole="USER" ToRole="MAIL" />
         </EntityType>
-        <Association Name="FK__MAIL__IDUser__619B8048">
+        <Association Name="FK__MAIL__IDUser__6D0D32F4">
           <End Type="FutureMeProductModel.USER" Role="USER" Multiplicity="1" />
           <End Type="FutureMeProductModel.MAIL" Role="MAIL" Multiplicity="*" />
           <ReferentialConstraint>

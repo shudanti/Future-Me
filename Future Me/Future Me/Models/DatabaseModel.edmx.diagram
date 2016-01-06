@@ -5,10 +5,10 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="698a3b86ad744d5b960a313710c5882f" Name="Diagram1">
-        <EntityTypeShape EntityType="FutureMeProductModel.MAIL" Width="1.5" PointX="3" PointY="0.875" />
+        <EntityTypeShape EntityType="FutureMeProductModel.MAIL" Width="1.5" PointX="3" PointY="1" />
         <EntityTypeShape EntityType="FutureMeProductModel.sysdiagram" Width="1.5" PointX="0.75" PointY="4.75" />
         <EntityTypeShape EntityType="FutureMeProductModel.USER" Width="1.5" PointX="0.75" PointY="1.5" />
-        <AssociationConnector Association="FutureMeProductModel.FK__MAIL__IDUser__619B8048" />
+        <AssociationConnector Association="FutureMeProductModel.FK__MAIL__IDUser__6D0D32F4" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
