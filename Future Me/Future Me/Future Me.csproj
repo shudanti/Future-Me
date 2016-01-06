@@ -97,6 +97,7 @@
     <Content Include="css\font-awesome.css" />
     <Content Include="css\font-awesome.min.css" />
     <Content Include="css\style.css" />
+    <Content Include="css\style_table.css" />
     <Content Include="fonts\fontawesome-webfont.svg" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="footer.aspx" />
@@ -106,6 +107,7 @@
     <Content Include="img\colorful.jpg" />
     <Content Include="img\images.jpg" />
     <Content Include="header.aspx" />
+    <Content Include="manager.aspx" />
     <Content Include="Models\DatabaseModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>DatabaseModel.edmx</DependentUpon>
@@ -123,7 +125,6 @@
     <Content Include="js\jquery.backstretch.js" />
     <Content Include="js\jquery.js" />
     <Content Include="Global.asax" />
-    <Content Include="joined.aspx" />
     <Content Include="register.aspx" />
     <Content Include="signin.aspx" />
     <Content Include="signinprocess.aspx" />
@@ -135,6 +136,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="manager.aspx.cs">
+      <DependentUpon>manager.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="manager.aspx.designer.cs">
+      <DependentUpon>manager.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Models\DatabaseModel.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

@@ -49,9 +49,6 @@
             </div>
         </div>
         <!--#include file="footer.aspx"-->
-        <asp:ScriptManager ID="ScriptManager1" 
-            EnablePageMethods="true" 
-            EnablePartialRendering="true" runat="server" />
         <script type="text/javascript">
             $("#myForm").submit(function (e) {
                 var _IDUser = 1;

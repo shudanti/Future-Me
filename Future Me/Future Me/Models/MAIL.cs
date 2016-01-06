@@ -21,6 +21,7 @@ namespace Future_Me.Models
         public string Letter { get; set; }
         public System.DateTime DeliverOn { get; set; }
         public int Status { get; set; }
+        public int ViewStatus { get; set; }
     
         public virtual USER USER1 { get; set; }
     }

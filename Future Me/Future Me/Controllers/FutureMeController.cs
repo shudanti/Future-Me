@@ -10,13 +10,19 @@ namespace Future_Me.Models
 {
     public class FutureMeController : ApiController
     {
-        [HttpGet]
+        [AcceptVerbs("POST", "OPTIONS")]
+        [HttpPost]
         [Route("getMailOf")]
-        public HttpResponseMessage GetAll([FromBody] int userid)
+        public HttpResponseMessage GetAll([FromBody] USER userEmail)
         {
             using (FutureMeProductEntities ctx = new FutureMeProductEntities())
             {
-                var list = ctx.MAILs.Where(x => x.IDUser == userid).ToList();
+                var user = ctx.USERS.Where(x => x.Email == userEmail.Email).FirstOrDefault();
+                if (user == null)
+                {
+                    return Request.CreateResponse(HttpStatusCode.BadRequest);
+                }
+                var list = ctx.MAILs.Where(x => x.IDUser == user.ID).ToList();
                 return Request.CreateResponse(HttpStatusCode.OK, list);
             }
         }
@@ -55,6 +61,7 @@ namespace Future_Me.Models
                     mail.Letter = mailData.Letter;
                     mail.DeliverOn = mailData.DeliverOn;
                     mail.Status = 0; // Store mail, not send yet
+                    mail.ViewStatus = mailData.ViewStatus;
                     ctx.MAILs.Add(mail);
                     ctx.SaveChanges();
                     return Request.CreateResponse(HttpStatusCode.OK);

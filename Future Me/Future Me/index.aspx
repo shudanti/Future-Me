@@ -77,7 +77,7 @@
             $.ajax({
                 type: "POST",
                 url: url,
-                data: { IDUser: _IDUser, EmailTo: _email, Subject: _Subject, Letter: _Letter, DeliverOn: _DeliverOn }, // serializes the form's elements.
+                data: { IDUser: _IDUser, EmailTo: _email, Subject: _Subject, Letter: _Letter, DeliverOn: _DeliverOn, ViewStatus: 1 }, // serializes the form's elements.
                 success: function (data) {
                     alert("A letter is stored!"); // show response from the php script.
                     window.location.href = "index.aspx";
