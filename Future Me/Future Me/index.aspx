@@ -1,7 +1,7 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="index.aspx.cs" Inherits="Future_Me.index" %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html xmlns="http://www.w3.org/1999/xhtml" ng-app="myApp">
 <head runat="server">
     <!--#include file="header.aspx"-->
     <meta name="google-signin-scope" content="profile email">
@@ -10,7 +10,7 @@
 </head>
 <body>
 
-    <form id="form1" runat="server">
+    <form id="form1" name="form1" runat="server">
         <!--#include file="topbar.aspx"-->
         <div class="container">
             <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 text-center">
@@ -26,27 +26,39 @@
                             <div class="form-group">
                                 <asp:Label ID="Label1" runat="server" Text="To Email" CssClass="col-lg-2 control-label"></asp:Label>
                                 <div class="col-lg-10">
-                                    <asp:TextBox ID="tbEmail" runat="server" placeholder="Email" CssClass="form-control"></asp:TextBox>
+                                    <asp:TextBox ID="tbEmail" runat="server" placeholder="Email" CssClass="form-control"
+                                        ng-model="email" ng-minlength="5" ng-maxlength="50" TextMode="Email" required></asp:TextBox>
+                                </div>
+                                <div ng-messages="form1.tbEmail.$error" ng-if='form1.tbEmail.$dirty'>
+                                  <div ng-message="required">This field is required</div>
+                                  <div ng-message="email">Your email address is invalid</div>
+                                  <div ng-message="minlength">Your field is too short</div>
+                                  <div ng-message="maxlength">Your field is too long</div>
                                 </div>
                             </div>
 
                             <div class="form-group">
                                 <asp:Label ID="Label2" runat="server" Text="Subject" CssClass="col-lg-2 control-label"></asp:Label>
                                 <div class="col-lg-10">
-                                    <asp:TextBox ID="tbSubject" runat="server" placeholder="Subject" CssClass="form-control"></asp:TextBox>
+                                    <asp:TextBox ID="tbSubject" runat="server" placeholder="Subject" CssClass="form-control"
+                                        required></asp:TextBox>
                                 </div>
                             </div>
 
                             <div class="form-group">
                                 <asp:Label ID="Label6" runat="server" Text="Your Letter" CssClass="col-lg-2 control-label"></asp:Label>
                                 <div class="col-lg-10">
-                                    <asp:TextBox ID="tbLetter" runat="server" Text="Dear me in Future," CssClass="form-control" Rows="3" TextMode="MultiLine"></asp:TextBox>
+                                    <asp:TextBox ID="tbLetter" runat="server" Text="Dear me in Future," CssClass="form-control" Rows="3" TextMode="MultiLine"
+                                       required></asp:TextBox>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <asp:Label ID="Label3" runat="server" Text="On date" CssClass="col-lg-2 control-label"></asp:Label>
                                 <div class="col-lg-10">
-                                    <asp:TextBox ID="txtDate" runat="server" CssClass="form-control"></asp:TextBox>
+                                    <asp:TextBox ID="txtDate" runat="server" CssClass="form-control" ng-model="date" required></asp:TextBox>
+                                </div>
+                                <div ng-messages="form1.txtDate.$error" ng-if='form1.txtDate.$dirty'>
+                                  <div ng-message="required">This field is required</div>
                                 </div>
                             </div>
                             <div class="form-group">
@@ -64,7 +76,7 @@
 
                             <div class="form-group">
                                 <div class="col-lg-10 col-lg-offset-2">
-                                    <asp:Button ID="btnSubmit" runat="server" CssClass="btn btn-primary" Text="Submit" />
+                                    <asp:Button ID="btnSubmit" runat="server" CssClass="btn btn-primary" Text="Submit" ng-disabled="form1.tbEmail.$invalid || form1.txtDate.$invalid"/>
                                     <asp:Button ID="btnCancel" runat="server" CssClass="btn btn-warning" Text="Cancel" UseSubmitBehavior="False" />
                                 </div>
                             </div>

@@ -21,37 +21,40 @@
                                     <th>Subject</th>
                                     <th>Letter</th>
                                     <th>On date</th>
-                                    <th>Status</th>
                                     <th>View Status</th>
+                                    <th>Status</th>
                                     <th>Edit/Delete</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr ng-repeat="mail in mails">
-                                    <td>{{mail.EmailTo}}</td>
-                                    <td>{{mail.Subject}}</td>
-                                    <td>{{mail.Letter}}</td>
-                                    <td>{{mail.DeliverOn | date:'dd-MM-yyyy'}}</td>
-                                    <td>
-                                        <div ng-switch on="mail.ViewStatus">
-                                            <span ng-switch-when="1">Can Edit</span>
-                                            <span ng-switch-when="2">Lock</span>
-                                            <span ng-switch-when="3">Hide</span>
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <div ng-switch on="mail.Status">
-                                            <span ng-switch-when="0">Waiting</span>
-                                            <span ng-switch-when="1">Sent</span>
-                                            <span ng-switch-when="2">Send Error</span>
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <div style="overflow: auto; width: 100%;">
-                                            <input id="btEdit" type="button" value="Edit" class="btn btn-primary" ng-click="edit(mail)" style="padding: 2px 3px;" />
-                                            <input id="btDelete" type="button" value="X" class="btn btn-danger" ng-click="delete(mail)" style="padding: 2px 8px;" />
-                                        </div>
-                                    </td>
+                                <tr ng-repeat="mail in mails" ng-if="mail.ViewStatus != 3">
+                                    <div>
+                                        <td>{{mail.EmailTo}}</td>
+                                        <td>{{mail.Subject}}</td>
+                                        <td>{{mail.Letter}}</td>
+                                        <td>{{mail.DeliverOn | date:'dd-MM-yyyy'}}</td>
+                                        <td>
+                                            <div ng-switch on="mail.ViewStatus">
+                                                <span ng-switch-when="1">Can Edit</span>
+                                                <span ng-switch-when="2">Lock</span>
+                                                <span ng-switch-when="3">Hide</span>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div ng-switch on="mail.Status">
+                                                <span ng-switch-when="0">Waiting</span>
+                                                <span ng-switch-when="1">Sent</span>
+                                                <span ng-switch-when="2">Send Error</span>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div style="overflow: auto; width: 100%;">
+                                                <input id="btEdit" type="button" value="Edit" class="btn btn-primary" ng-click="edit(mail)" style="padding: 2px 3px;"
+                                                    ng-disabled="!(mail.Status==0 && mail.ViewStatus==1)" />
+                                                <input id="btDelete" type="button" value="X" class="btn btn-danger" ng-click="delete(mail)" style="padding: 2px 8px;" />
+                                            </div>
+                                        </td>
+                                    </div>
                                 </tr>
                             </tbody>
                         </table>
@@ -73,8 +76,7 @@
 
                 $scope.delete = function (mail) {
                     var dataToPost = { ID: mail.ID, IDUser: mail.IDUser };
-                    if(confirm("Do you really want to delete this?") )
-                    {
+                    if (confirm("Do you really want to delete this?")) {
                         $http.post("deleteMail", dataToPost)
                         .success(function (data) {
                             alert("Done.");

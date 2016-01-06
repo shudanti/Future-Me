@@ -10,7 +10,7 @@
 </head>
 <body ng-controller="editCtrl">
 
-    <form id="form1" runat="server">
+    <form id="form2" name="form2" runat="server">
         <!--#include file="topbar.aspx"-->
         <div class="container">
             <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 text-center">
@@ -26,27 +26,28 @@
                             <div class="form-group">
                                 <asp:Label ID="Label1" runat="server" Text="To Email" CssClass="col-lg-2 control-label"></asp:Label>
                                 <div class="col-lg-10">
-                                    <asp:TextBox ID="tbEmail" runat="server" placeholder="Email" Text="{{mail.EmailTo}}" CssClass="form-control"></asp:TextBox>
+                                    <asp:TextBox ID="tbEmail" runat="server" placeholder="Email" Text="{{mail.EmailTo}}" CssClass="form-control"
+                                        TextMode="Email"></asp:TextBox>
                                 </div>
                             </div>
 
                             <div class="form-group">
                                 <asp:Label ID="Label2" runat="server" Text="Subject" CssClass="col-lg-2 control-label"></asp:Label>
                                 <div class="col-lg-10">
-                                    <asp:TextBox ID="tbSubject" runat="server" placeholder="Subject" Text="{{mail.Subject}}" CssClass="form-control"></asp:TextBox>
+                                    <asp:TextBox ID="tbSubject" runat="server" placeholder="Subject" Text="{{mail.Subject}}" CssClass="form-control" require></asp:TextBox>
                                 </div>
                             </div>
 
                             <div class="form-group">
                                 <asp:Label ID="Label6" runat="server" Text="Your Letter" CssClass="col-lg-2 control-label"></asp:Label>
                                 <div class="col-lg-10">
-                                    <asp:TextBox ID="tbLetter" runat="server" Text="{{mail.Letter}}" CssClass="form-control" Rows="3" TextMode="MultiLine"></asp:TextBox>
+                                    <asp:TextBox ID="tbLetter" runat="server" Text="{{mail.Letter}}" CssClass="form-control" Rows="3" TextMode="MultiLine" require></asp:TextBox>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <asp:Label ID="Label3" runat="server" Text="On date" CssClass="col-lg-2 control-label"></asp:Label>
                                 <div class="col-lg-10">
-                                    <asp:TextBox ID="txtDate" runat="server" Text="{{mail.DeliverOn}}" CssClass="form-control"></asp:TextBox>
+                                    <asp:TextBox ID="txtDate" runat="server" Text="{{mail.DeliverOn}}" CssClass="form-control" require></asp:TextBox>
                                 </div>
                             </div>
                             <div class="form-group">
@@ -64,7 +65,7 @@
 
                             <div class="form-group">
                                 <div class="col-lg-10 col-lg-offset-2">
-                                    <asp:Button ID="btnSubmit" runat="server" CssClass="btn btn-primary" Text="Submit" />
+                                    <asp:Button ID="btnSubmit" runat="server" CssClass="btn btn-primary" Text="Submit"/>
                                     <asp:Button ID="btnCancel" runat="server" CssClass="btn btn-warning" Text="Cancel" UseSubmitBehavior="False" />
                                 </div>
                             </div>
@@ -84,7 +85,7 @@
             function onFailure(error) {
                 alert(error);
             }
-            $("#form1").submit(function (e) {
+            $("#form2").submit(function (e) {
                 // get id user if is login
                 var _idEmail = angular.element(document.querySelector('[ng-controller="editCtrl"]')).scope().mail.ID;
                 var _email = $('#tbEmail').val();

@@ -17,6 +17,8 @@ namespace Future_Me
             {
                 FormsAuthentication.RedirectToLoginPage();
             }
+
+            tbSubject.Text = "A letter form " + DateTime.Now.ToLongDateString();
         }
         [WebMethod]
         public static string getUserEmail()

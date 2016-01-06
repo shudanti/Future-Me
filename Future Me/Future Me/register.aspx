@@ -25,7 +25,7 @@
                                 <asp:Label ID="Label6" runat="server" Text="Email" CssClass="col-lg-2 control-label"></asp:Label>
                                 <div class="col-lg-10">
                                     <asp:TextBox ID="email" name="email" runat="server" placeholder="Email" CssClass="form-control" 
-                                         ng-model="email" ng-minlength="5" ng-maxlength="20" TextMode="Email" required></asp:TextBox>
+                                         ng-model="email" ng-minlength="5" ng-maxlength="50" TextMode="Email" required></asp:TextBox>
                                 </div>
                                 <div ng-messages="myForm.email.$error" ng-if='myForm.email.$dirty'>
                                   <div ng-message="required">This field is required</div>
@@ -39,7 +39,7 @@
                                 <div class="col-lg-10">
                                     <asp:TextBox ID="pw1" name="pw1" runat="server" placeholder="Password" CssClass="form-control" 
                                         TextMode="Password"
-                                        ng-minlength="5" ng-maxlength="20" ng-pattern="/^([0-9]+[a-zA-Z]+|[a-zA-Z]+[0-9]+)[0-9a-zA-Z]*$/"
+                                        ng-minlength="5" ng-maxlength="50" ng-pattern="/^([0-9]+[a-zA-Z]+|[a-zA-Z]+[0-9]+)[0-9a-zA-Z]*$/"
                                         ng-model="pw1" required></asp:TextBox>
                                 </div>
                                 <div ng-messages="myForm.pw1.$error" ng-if='myForm.pw1.$dirty'>
