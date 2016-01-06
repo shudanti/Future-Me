@@ -108,6 +108,7 @@
     <Content Include="img\images.jpg" />
     <Content Include="header.aspx" />
     <Content Include="index.aspx" />
+    <Content Include="js\javascripts.js" />
     <Content Include="manager.aspx" />
     <Content Include="Models\DatabaseModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
@@ -252,7 +253,7 @@
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>15190</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>https://localhost:44300/</IISUrl>
+          <IISUrl>http://localhost:15190/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>

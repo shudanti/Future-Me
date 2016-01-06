@@ -14,6 +14,7 @@
                 <li><a href="/signin.aspx">Sign in</a> </li>
                 <li><a href="/contact">Contact Us</a> </li>
                 <li><a href="/signout.aspx" onclick="signOut();">Sign Out</a> </li>
+                <%--<li><a href="#" onclick="signOut();">Sign Out</a> </li>--%>
             </ul>
         </div>
     </div>
