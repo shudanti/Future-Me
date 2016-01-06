@@ -152,5 +152,40 @@ namespace Future_Me.Models
                 return Request.CreateResponse(HttpStatusCode.OK, affected);
             }
         }
+        [AcceptVerbs("POST", "OPTIONS")]
+        [HttpPost]
+        [Route("googleSignIn")]
+        public HttpResponseMessage googleSignIn([FromBody] USER userData)
+        {
+            using (FutureMeProductEntities ctx = new FutureMeProductEntities())
+            {
+                if (userData == null)
+                    return Request.CreateResponse(HttpStatusCode.BadRequest);
+                var user = ctx.USERS.Where(x => x.Email == userData.Email).FirstOrDefault();
+                if (user == null)
+                {
+                    try
+                    {
+                        USER u = new USER();
+                        u.Email = userData.Email;
+                        u.Password = userData.Password.Substring(0, 16);
+                        ctx.USERS.Add(u);
+                        ctx.SaveChanges();
+                        return Request.CreateResponse(HttpStatusCode.OK);
+                    }
+                    catch (Exception e)
+                    {
+                        return Request.CreateResponse(HttpStatusCode.BadRequest, e);
+                    }
+                }
+                else
+                {
+                    var returnUser = new USER();
+                    returnUser.Email = user.Email;
+                    returnUser.ID = user.ID;
+                    return Request.CreateResponse(HttpStatusCode.OK, returnUser);
+                } 
+            }
+        }
     }
 }

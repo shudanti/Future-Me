@@ -5,6 +5,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml" ng-app="myApp">
 <head runat="server">
     <!--#include file="header.aspx"-->
+    
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
     <title>Email2Future</title>
 </head>
 
@@ -41,6 +43,7 @@
                                 <div class="col-lg-10 col-lg-offset-2">
                                     <asp:Button ID="Button1" type="submit" runat="server" CssClass="btn btn-primary" Text="Submit" />
                                     <asp:Button ID="Button2" runat="server" CssClass="btn btn-warning" Text="Cancel" />
+                                    
                                 </div>
                             </div>
                         </fieldset>

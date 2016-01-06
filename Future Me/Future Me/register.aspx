@@ -4,6 +4,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml" >
 <head runat="server">
     <!--#include file="header.aspx"-->
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
+    <meta name="google-signin-client_id" content="701272448744-o962ib0di7kft9s3p7jqmf8srhp9ed3r.apps.googleusercontent.com">
     <title>Email2Future</title>
 </head>
 
@@ -63,7 +65,9 @@
                             <div class="form-group">
                                 <div class="col-lg-10 col-lg-offset-2">
                                     <asp:Button ID="Button1" type="submit" runat="server" CssClass="btn btn-primary" Text="Submit" ng-model="button" ng-disabled="myForm.pw1.$invalid || myForm.pw2.$invalid || myForm.email.$invalid"/>
-                                    <asp:Button ID="Button2" runat="server" CssClass="btn btn-warning" Text="Cancel" />
+                                    <asp:Button ID="Button2" runat="server" CssClass="btn btn-warning" Text="Cancel" class="g-signin2" data-onsuccess="onSignIn" />
+                                    <div class="g-signin2" data-onsuccess="onSignIn" data-theme="dark" style="float:right"></div>
+
                                 </div>
                             </div>
                         </fieldset>
@@ -97,6 +101,37 @@
                 e.preventDefault(); // avoid to execute the actual submit of the form.
             });
         </script>
+        <script>
+            function onSignIn(googleUser) {
+                var profile = googleUser.getBasicProfile();
+                var id_token = googleUser.getAuthResponse().id_token;
+                var email = profile.getEmail();
+
+                var url = "googleSignIn"; // the script where you handle the form input.
+
+                $.ajax({
+                    type: "POST",
+                    url: url,
+                    data: { Email: email, Password: id_token }, // serializes the form's elements.
+                    success: function (data) {
+                        alert("Sign up succeed!"); // show response from the php script.
+                    },
+                    error: function (error) {
+                        alert("Sign up failed!");
+                    }
+                });
+
+                e.preventDefault(); // avoid to execute the actual submit of the form.
+            }
+    </script>
+    <script>
+        function signOut() {
+            var auth2 = gapi.auth2.getAuthInstance();
+            auth2.signOut().then(function () {
+                console.log('User signed out.');
+            });
+        }
+    </script>
     </form>
 </body>
 </html>
