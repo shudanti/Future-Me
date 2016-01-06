@@ -4,7 +4,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <!--#include file="header.aspx"-->
-
+    <meta name="google-signin-scope" content="profile email">
+<meta name="google-signin-client_id" content="701272448744-o962ib0di7kft9s3p7jqmf8srhp9ed3r.apps.googleusercontent.com">
     <title>Email2Future</title>
 </head>
 <body>

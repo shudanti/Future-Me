@@ -20,6 +20,11 @@
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-messages.js" type="text/javascript"></script>
 <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js" type="text/javascript"></script>
 <script src="js/angularScript.js" type="text/javascript"></script>
+<script src="js/javascripts.js" type="text/javascript"></script>
+<script src="https://apis.google.com/js/platform.js?onload=onLoad" type="text/javascript" async defer></script>
 <asp:ScriptManager ID="ScriptManager2" 
             EnablePageMethods="true" 
             EnablePartialRendering="true" runat="server" />
+<script src="//code.jquery.com/ui/1.11.4/jquery-ui.js" type="text/javascript"></script>
+<meta name="google-signin-scope" content="profile email">
+<meta name="google-signin-client_id" content="701272448744-o962ib0di7kft9s3p7jqmf8srhp9ed3r.apps.googleusercontent.com">

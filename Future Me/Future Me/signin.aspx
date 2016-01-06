@@ -41,6 +41,7 @@
                                 <div class="col-lg-10 col-lg-offset-2">
                                     <asp:Button ID="Button1" type="submit" runat="server" CssClass="btn btn-primary" Text="Submit" />
                                     <asp:Button ID="btnCancel" runat="server" CssClass="btn btn-warning" Text="Cancel" UseSubmitBehavior="False" />  
+                                    <div class="g-signin2" data-onsuccess="onSignIn" data-theme="dark" style="float:right"></div>
                                 </div>
                             </div>
                         </fieldset>

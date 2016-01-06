@@ -64,6 +64,8 @@
                                 <div class="col-lg-10 col-lg-offset-2">
                                     <asp:Button ID="Button1" type="submit" runat="server" CssClass="btn btn-primary" Text="Submit" ng-model="button" ng-disabled="myForm.pw1.$invalid || myForm.pw2.$invalid || myForm.email.$invalid"/>
                                     <asp:Button ID="btnCancel" runat="server" CssClass="btn btn-warning" Text="Cancel" UseSubmitBehavior="False" />
+                                    
+
                                 </div>
                             </div>
                         </fieldset>

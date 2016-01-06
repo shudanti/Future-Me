@@ -15,7 +15,7 @@
     <AssemblyName>Future Me</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <UseIISExpress>true</UseIISExpress>
-    <IISExpressSSLPort />
+    <IISExpressSSLPort>44300</IISExpressSSLPort>
     <IISExpressAnonymousAuthentication />
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
@@ -109,6 +109,7 @@
     <Content Include="img\images.jpg" />
     <Content Include="header.aspx" />
     <Content Include="index.aspx" />
+    <Content Include="js\javascripts.js" />
     <Content Include="manager.aspx" />
     <Content Include="Models\DatabaseModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
