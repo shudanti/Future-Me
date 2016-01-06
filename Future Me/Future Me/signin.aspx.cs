@@ -24,7 +24,8 @@ namespace Future_Me
         {
             try
             {
-                FormsAuthentication.RedirectFromLoginPage(user, false);
+                string a = user;
+                //FormsAuthentication.RedirectFromLoginPage(user, false);
             }catch(Exception e)
             {
 

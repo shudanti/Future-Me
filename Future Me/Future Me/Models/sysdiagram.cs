@@ -12,17 +12,12 @@ namespace Future_Me.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class MAIL
+    public partial class sysdiagram
     {
-        public int ID { get; set; }
-        public int IDUser { get; set; }
-        public string EmailTo { get; set; }
-        public string Subject { get; set; }
-        public string Letter { get; set; }
-        public System.DateTime DeliverOn { get; set; }
-        public int Status { get; set; }
-        public int ViewStatus { get; set; }
-    
-        public virtual USER USER { get; set; }
+        public string name { get; set; }
+        public int principal_id { get; set; }
+        public int diagram_id { get; set; }
+        public Nullable<int> version { get; set; }
+        public byte[] definition { get; set; }
     }
 }

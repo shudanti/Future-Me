@@ -18,11 +18,5 @@ ViewStatus int NOT NULL,
 FOREIGN KEY (IDUser) REFERENCES USERS(ID)
 );
 
-SET IDENTITY_INSERT USERS ON
-INSERT INTO USERS (ID,Email,Password)
-VALUES (1,'anonymous','anonymous');
-SET IDENTITY_INSERT USERS OFF
-SET IDENTITY_INSERT MAIL ON
-INSERT INTO MAIL (ID, IDUser, EmailTo, Subject, Letter, DeliverOn)
-VALUES (1,1,'example@test.com', 'Test', 'Test', '1/1/2015');
-SET IDENTITY_INSERT MAIL OFF
+INSERT INTO USERS (Email,Password)
+VALUES ('anonymous@anonymous.com','anonymous');

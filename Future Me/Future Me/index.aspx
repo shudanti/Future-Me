@@ -53,7 +53,7 @@
                         <div class="form-group">
                             <div class="col-lg-10 col-lg-offset-2">
                                 <asp:Button ID="btnSubmit" runat="server" CssClass="btn btn-primary" Text="Submit"/>
-                                  <asp:Button ID="btnCancel" runat="server" CssClass="btn btn-warning" Text="Cancel" />                              
+                                <asp:Button ID="btnCancel" runat="server" CssClass="btn btn-warning" Text="Cancel" UseSubmitBehavior="False" />                              
                             </div>
                         </div>
                     </fieldset>
@@ -63,10 +63,18 @@
     </div>
     <!--#include file="footer.aspx"-->
     <script type="text/javascript">
+        var _UserName;
+        PageMethods.getUserEmail(onSuccess, onFailure);
+        function onSuccess(result) {
+            _UserName = result;
+        }
+
+        function onFailure(error) {
+            alert(error);
+        }
         $("#form1").submit(function (e) {
-            var _IDUser = 1;
             // get id user if is login
-            //var _IDUser = ;
+
             var _email = $('#tbEmail').val();
             var _Subject = $('#tbSubject').val();
             var _Letter = $('#tbLetter').val();
@@ -77,7 +85,7 @@
             $.ajax({
                 type: "POST",
                 url: url,
-                data: { IDUser: _IDUser, EmailTo: _email, Subject: _Subject, Letter: _Letter, DeliverOn: _DeliverOn, ViewStatus: 1 }, // serializes the form's elements.
+                data: { EmailTo: _email, Subject: _Subject, Letter: _Letter, DeliverOn: _DeliverOn, ViewStatus: 1, userEmail: _UserName }, // serializes the form's elements.
                 success: function (data) {
                     alert("A letter is stored!"); // show response from the php script.
                     window.location.href = "index.aspx";

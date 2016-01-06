@@ -19,5 +19,7 @@
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.js" type="text/javascript"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-messages.js" type="text/javascript"></script>
 <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js" type="text/javascript"></script>
-
 <script src="js/angularScript.js" type="text/javascript"></script>
+<asp:ScriptManager ID="ScriptManager2" 
+            EnablePageMethods="true" 
+            EnablePartialRendering="true" runat="server" />

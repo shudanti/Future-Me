@@ -107,6 +107,7 @@
     <Content Include="img\colorful.jpg" />
     <Content Include="img\images.jpg" />
     <Content Include="header.aspx" />
+    <Content Include="index.aspx" />
     <Content Include="manager.aspx" />
     <Content Include="Models\DatabaseModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
@@ -118,7 +119,6 @@
       <DependentUpon>DatabaseModel.edmx</DependentUpon>
       <LastGenOutput>DatabaseModel.cs</LastGenOutput>
     </Content>
-    <Content Include="index.aspx" />
     <Content Include="js\angular.min.js" />
     <Content Include="js\angularScript.js" />
     <Content Include="js\bootstrap.min.js" />
@@ -136,6 +136,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="index.aspx.cs">
+      <DependentUpon>index.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="index.aspx.designer.cs">
+      <DependentUpon>index.aspx</DependentUpon>
+    </Compile>
     <Compile Include="manager.aspx.cs">
       <DependentUpon>manager.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -162,12 +169,11 @@
     <Compile Include="Models\MAIL.cs">
       <DependentUpon>DatabaseModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\USER.cs">
+    <Compile Include="Models\sysdiagram.cs">
       <DependentUpon>DatabaseModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="index.aspx.cs">
-      <DependentUpon>index.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
+    <Compile Include="Models\USER.cs">
+      <DependentUpon>DatabaseModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>

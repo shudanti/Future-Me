@@ -12,6 +12,7 @@ namespace Future_Me
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            Session["UserID"] = Request.Params["ID"];
             FormsAuthentication.RedirectFromLoginPage(Request.Params["Email"], false);
         }
     }
