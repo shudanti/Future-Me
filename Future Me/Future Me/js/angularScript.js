@@ -1,7 +1,7 @@
 ﻿'use strict';
 angular.module('myApp', ['ngMessages']);
 var myApp = angular.module('myApp');
-
+var managerApp = angular.module('managerApp', []);
 
 myApp.directive('containDigitAndLetter',
   ['$http', function ($http) {

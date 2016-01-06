@@ -26,6 +26,7 @@ namespace Future_Me.Models
         }
     
         public virtual DbSet<MAIL> MAILs { get; set; }
+        public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
         public virtual DbSet<USER> USERS { get; set; }
     }
 }

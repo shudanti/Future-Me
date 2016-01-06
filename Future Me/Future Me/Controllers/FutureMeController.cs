@@ -8,16 +8,46 @@ using System.Web.Http;
 
 namespace Future_Me.Models
 {
+    public class MailData : MAIL
+    {
+        public string userEmail{ get; set; }
+    }
     public class FutureMeController : ApiController
     {
-        [HttpGet]
+        [AcceptVerbs("POST", "OPTIONS")]
+        [HttpPost]
         [Route("getMailOf")]
-        public HttpResponseMessage GetAll([FromBody] int userid)
+        public HttpResponseMessage GetAll([FromBody] USER userEmail)
         {
             using (FutureMeProductEntities ctx = new FutureMeProductEntities())
             {
-                var list = ctx.MAILs.Where(x => x.IDUser == userid).ToList();
+                var user = ctx.USERS.Where(x => x.Email == userEmail.Email).FirstOrDefault();
+                if (user == null)
+                {
+                    return Request.CreateResponse(HttpStatusCode.BadRequest);
+                }
+                var list = ctx.MAILs.Where(x => x.IDUser == user.ID).ToList();
+                for (int i = 0; i < list.Count; i++ )
+                {
+                    list[i].USER = null;
+                }
                 return Request.CreateResponse(HttpStatusCode.OK, list);
+            }
+        }
+
+        [AcceptVerbs("POST", "OPTIONS")]
+        [HttpPost]
+        [Route("getUserId")]
+        public HttpResponseMessage getUserId([FromBody] USER user)
+        {
+            using (FutureMeProductEntities ctx = new FutureMeProductEntities())
+            {
+                var id = ctx.USERS.Where(x => x.Email == user.Email).FirstOrDefault().ID;
+                if (user == null)
+                {
+                    return Request.CreateResponse(HttpStatusCode.BadRequest);
+                }
+                return Request.CreateResponse(HttpStatusCode.OK, id);
             }
         }
 
@@ -42,19 +72,25 @@ namespace Future_Me.Models
         [AcceptVerbs("POST", "OPTIONS")]
         [HttpPost]
         [Route("addEmail")]
-        public HttpResponseMessage addEmail([FromBody] MAIL mailData)
+        public HttpResponseMessage addEmail([FromBody] MailData mailData)
         {
             using (FutureMeProductEntities ctx = new FutureMeProductEntities())
             {
                 try
                 {
+                    var id = ctx.USERS.Where(x => x.Email == mailData.userEmail).FirstOrDefault().ID;
+                    if (id == null)
+                    {
+                        return Request.CreateResponse(HttpStatusCode.BadRequest);
+                    }
                     MAIL mail = new MAIL();
-                    mail.IDUser = mailData.IDUser;
+                    mail.IDUser = id;
                     mail.EmailTo = mailData.EmailTo;
                     mail.Subject = mailData.Subject;
                     mail.Letter = mailData.Letter;
                     mail.DeliverOn = mailData.DeliverOn;
                     mail.Status = 0; // Store mail, not send yet
+                    mail.ViewStatus = mailData.ViewStatus;
                     ctx.MAILs.Add(mail);
                     ctx.SaveChanges();
                     return Request.CreateResponse(HttpStatusCode.OK);

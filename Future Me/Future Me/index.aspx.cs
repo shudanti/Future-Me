@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Net.Mail;
 using System.Web;
 using System.Web.Security;
+using System.Web.Services;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
@@ -17,6 +17,22 @@ namespace Future_Me
             {
                 FormsAuthentication.RedirectToLoginPage();
             }
+        }
+        [WebMethod]
+        public static string getUserEmail()
+        {
+            try
+            {
+                if (HttpContext.Current.User.Identity.IsAuthenticated)
+                {
+                    return HttpContext.Current.User.Identity.Name;
+                }
+            }
+            catch (Exception e)
+            {
+
+            }
+            return null;
         }
     }
 }

@@ -9,6 +9,7 @@
         <div class="collapse navbar-collapse navbar-menubuilder">
             <ul class="nav navbar-nav navbar-right">
                 <li><a href="/">Home</a> </li>
+                <li><a href="/manager.aspx">Your mail</a> </li>
                 <li><a href="/register.aspx">Sign up</a> </li>
                 <li><a href="/signin.aspx">Sign in</a> </li>
                 <li><a href="/contact">Contact Us</a> </li>

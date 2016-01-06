@@ -65,6 +65,7 @@
                             <div class="form-group">
                                 <div class="col-lg-10 col-lg-offset-2">
                                     <asp:Button ID="Button1" type="submit" runat="server" CssClass="btn btn-primary" Text="Submit" ng-model="button" ng-disabled="myForm.pw1.$invalid || myForm.pw2.$invalid || myForm.email.$invalid"/>
+                                    <asp:Button ID="btnCancel" runat="server" CssClass="btn btn-warning" Text="Cancel" UseSubmitBehavior="False" />
                                     <asp:Button ID="Button2" runat="server" CssClass="btn btn-warning" Text="Cancel" class="g-signin2" data-onsuccess="onSignIn" />
                                     <div class="g-signin2" data-onsuccess="onSignIn" data-theme="dark" style="float:right"></div>
 
@@ -78,7 +79,6 @@
         <!--#include file="footer.aspx"-->
         <script type="text/javascript">
             $("#myForm").submit(function (e) {
-                var _IDUser = 1;
                 // get id user if is login
                 //var _IDUser = ;
                 var _email = $('#email').val();

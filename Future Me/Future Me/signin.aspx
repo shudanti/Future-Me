@@ -42,8 +42,7 @@
                             <div class="form-group">
                                 <div class="col-lg-10 col-lg-offset-2">
                                     <asp:Button ID="Button1" type="submit" runat="server" CssClass="btn btn-primary" Text="Submit" />
-                                    <asp:Button ID="Button2" runat="server" CssClass="btn btn-warning" Text="Cancel" />
-                                    
+                                    <asp:Button ID="btnCancel" runat="server" CssClass="btn btn-warning" Text="Cancel" UseSubmitBehavior="False" />  
                                 </div>
                             </div>
                         </fieldset>
@@ -52,14 +51,8 @@
             </div>
         </div>
         <!--#include file="footer.aspx"-->
-        <asp:ScriptManager ID="ScriptManager1" 
-            EnablePageMethods="true" 
-            EnablePartialRendering="true" runat="server" />
         <script type="text/javascript">
             $("#myForm").submit(function (e) {
-                var _IDUser = 1;
-                // get id user if is login
-                //var _IDUser = ;
                 var _email = $('#email').val();
                 var _password = $('#pw1').val();
 
@@ -70,11 +63,10 @@
                     url: url,
                     data: { Email: _email, Password: _password }, // serializes the form's elements.
                     success: function (data) {
-                        //PageMethods.LoginMethod(data.Email);
                         $.ajax({
                             type: "POST",
                             url: "signinprocess.aspx",
-                            data: { Email: data.Email }, // serializes the form's elements.
+                            data: { Email: data.Email, ID: data.ID}, // serializes the form's elements.
                             success: function (data) {
                                 alert("Sign in succeed!");
                                 window.location.href = "index.aspx";

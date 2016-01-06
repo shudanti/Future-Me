@@ -9,27 +9,27 @@ using System.Web.Security;
 
 namespace Future_Me
 {
-    public partial class signin : System.Web.UI.Page
+    public partial class manager : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (this.Page.User.Identity.IsAuthenticated)
-            {
-                Response.Redirect("index.aspx");
-            }
+
         }
 
         [WebMethod]
-        public static void LoginMethod(string user)
+        public static string getUserEmail()
         {
             try
             {
-                string a = user;
-                //FormsAuthentication.RedirectFromLoginPage(user, false);
-            }catch(Exception e)
+                return HttpContext.Current.User.Identity.Name;
+
+            }
+            catch (Exception e)
             {
 
             }
+
+            return null;
         }
     }
 }
