@@ -23,5 +23,28 @@ myApp.directive('containDigitAndLetter',
           }
       }
   }]);
+managerApp.factory('clientId', function clientIdFactory() {
+    return 'a12345654321x';
+});
 
+managerApp.factory('myService', function ($window) {
+    var KEY = 'managerApp.SelectedMail';
+    var savedData = {}
+    function set(data) {
+        savedData = data;
+        $window.sessionStorage.setItem(KEY, JSON.stringify(data));
+    }
+    function get() {
+        var savedData = $window.sessionStorage.getItem(KEY);
+        if (savedData) {
+            savedData = JSON.parse(savedData);
+        }
+        return savedData;
+    }
 
+    return {
+        set: set,
+        get: get
+    }
+
+});

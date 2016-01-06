@@ -145,23 +145,59 @@ namespace Future_Me.Models
         }
 
         [AcceptVerbs("DELETE", "OPTIONS")]
-        [HttpDelete]
+        [HttpPost]
         [Route("deleteMail")]
-        public HttpResponseMessage deleteMail([FromBody] int userid, [FromBody] int mailid)
+        public HttpResponseMessage deleteMail([FromBody] MAIL mail)
         {
             using (FutureMeProductEntities ctx = new FutureMeProductEntities())
             {
-                var sv = ctx.MAILs.Where(x => x.IDUser == userid && x.ID == mailid).FirstOrDefault();
-                if (sv == null)
+                var rs = ctx.MAILs.Where(x => x.IDUser == mail.IDUser && x.ID == mail.ID).FirstOrDefault();
+                if (rs == null)
                 {
                     return Request.CreateResponse(HttpStatusCode.BadRequest);
                 }
 
-                ctx.MAILs.Remove(sv);
+                ctx.MAILs.Remove(rs);
 
                 int affected = ctx.SaveChanges();
 
                 return Request.CreateResponse(HttpStatusCode.OK, affected);
+            }
+        }
+
+        [AcceptVerbs("POST", "OPTIONS")]
+        [HttpPost]
+        [Route("updateMail")]
+        public HttpResponseMessage updateMail([FromBody] MailData mailData)
+        {
+            using (FutureMeProductEntities ctx = new FutureMeProductEntities())
+            {
+                var id = ctx.USERS.Where(x => x.Email == mailData.userEmail).FirstOrDefault().ID;
+                if (id == null)
+                {
+                    return Request.CreateResponse(HttpStatusCode.BadRequest);
+                }
+
+                var mail = ctx.MAILs.Where(x => x.IDUser == id && x.ID == mailData.ID).FirstOrDefault();
+                if (mail == null)
+                {
+                    return Request.CreateResponse(HttpStatusCode.BadRequest);
+                }
+                if (mail.ViewStatus == 1 && mail.Status == 0)
+                {
+                    mail.EmailTo = mailData.EmailTo;
+                    mail.Subject = mailData.Subject;
+                    mail.Letter = mailData.Letter;
+                    mail.DeliverOn = mailData.DeliverOn;
+                    mail.ViewStatus = mailData.ViewStatus;
+                    int affected = ctx.SaveChanges();
+
+                    return Request.CreateResponse(HttpStatusCode.OK, affected);
+                }
+                else
+                {
+                    return Request.CreateResponse(HttpStatusCode.BadRequest);
+                }
             }
         }
 
@@ -177,15 +213,22 @@ namespace Future_Me.Models
                 {
                     return Request.CreateResponse(HttpStatusCode.BadRequest);
                 }
+                // Check status
+                if (mail.ViewStatus == 1 && mail.Status == 0)
+                {
+                    mail.EmailTo = mailData.EmailTo;
+                    mail.Subject = mailData.Subject;
+                    mail.Letter = mailData.Letter;
+                    mail.DeliverOn = mailData.DeliverOn;
 
-                mail.EmailTo = mailData.EmailTo;
-                mail.Subject = mailData.Subject;
-                mail.Letter = mailData.Letter;
-                mail.DeliverOn = mailData.DeliverOn;
+                    int affected = ctx.SaveChanges();
 
-                int affected = ctx.SaveChanges();
-
-                return Request.CreateResponse(HttpStatusCode.OK, affected);
+                    return Request.CreateResponse(HttpStatusCode.OK, affected);
+                }
+                else
+                {
+                    return Request.CreateResponse(HttpStatusCode.BadRequest);
+                }
             }
         }
     }

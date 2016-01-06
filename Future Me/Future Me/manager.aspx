@@ -48,8 +48,8 @@
                                     </td>
                                     <td>
                                         <div style="overflow: auto; width: 100%;">
-                                            <input id="btEdit" type="button" value="Edit" class="btn btn-primary" style="padding: 2px 3px;" />
-                                            <input id="btDelete" type="button" value="X" class="btn btn-danger" style="padding: 2px 8px;" />
+                                            <input id="btEdit" type="button" value="Edit" class="btn btn-primary" ng-click="edit(mail)" style="padding: 2px 3px;" />
+                                            <input id="btDelete" type="button" value="X" class="btn btn-danger" ng-click="delete(mail)" style="padding: 2px 8px;" />
                                         </div>
                                     </td>
                                 </tr>
@@ -65,11 +65,30 @@
             'use strict';
             var _UserName = "<%= HttpContext.Current.User.Identity.Name %>";
 
-            managerApp.controller('mailsCtrl', function ($scope, $http) {
+            managerApp.controller('mailsCtrl', function ($scope, myService, $http, $window) {
                 var user = { email: _UserName };
                 $http.post('getMailOf', user).success(function (data) {
                     $scope.mails = data;
                 });
+
+                $scope.delete = function (mail) {
+                    var dataToPost = { ID: mail.ID, IDUser: mail.IDUser };
+                    if(confirm("Do you really want to delete this?") )
+                    {
+                        $http.post("deleteMail", dataToPost)
+                        .success(function (data) {
+                            alert("Done.");
+                            location.reload();
+                        })
+                        .error(function (data) {
+                            alert("failure");
+                        });
+                    }
+                };
+                $scope.edit = function (mail) {
+                    myService.set(mail);
+                    $window.location.href = "edit.aspx";
+                };
             });
         </script>
     </form>

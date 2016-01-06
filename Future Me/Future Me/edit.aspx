@@ -1,13 +1,14 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="index.aspx.cs" Inherits="Future_Me.index" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="edit.aspx.cs" Inherits="Future_Me.edit" %>
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml" ng-app="managerApp">
 <head runat="server">
     <!--#include file="header.aspx"-->
 
     <title>Email2Future</title>
 </head>
-<body>
+<body ng-controller="editCtrl">
 
     <form id="form1" runat="server">
         <!--#include file="topbar.aspx"-->
@@ -25,27 +26,27 @@
                             <div class="form-group">
                                 <asp:Label ID="Label1" runat="server" Text="To Email" CssClass="col-lg-2 control-label"></asp:Label>
                                 <div class="col-lg-10">
-                                    <asp:TextBox ID="tbEmail" runat="server" placeholder="Email" CssClass="form-control"></asp:TextBox>
+                                    <asp:TextBox ID="tbEmail" runat="server" placeholder="Email" Text="{{mail.EmailTo}}" CssClass="form-control"></asp:TextBox>
                                 </div>
                             </div>
 
                             <div class="form-group">
                                 <asp:Label ID="Label2" runat="server" Text="Subject" CssClass="col-lg-2 control-label"></asp:Label>
                                 <div class="col-lg-10">
-                                    <asp:TextBox ID="tbSubject" runat="server" placeholder="Subject" CssClass="form-control"></asp:TextBox>
+                                    <asp:TextBox ID="tbSubject" runat="server" placeholder="Subject" Text="{{mail.Subject}}" CssClass="form-control"></asp:TextBox>
                                 </div>
                             </div>
 
                             <div class="form-group">
                                 <asp:Label ID="Label6" runat="server" Text="Your Letter" CssClass="col-lg-2 control-label"></asp:Label>
                                 <div class="col-lg-10">
-                                    <asp:TextBox ID="tbLetter" runat="server" Text="Dear me in Future," CssClass="form-control" Rows="3" TextMode="MultiLine"></asp:TextBox>
+                                    <asp:TextBox ID="tbLetter" runat="server" Text="{{mail.Letter}}" CssClass="form-control" Rows="3" TextMode="MultiLine"></asp:TextBox>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <asp:Label ID="Label3" runat="server" Text="On date" CssClass="col-lg-2 control-label"></asp:Label>
                                 <div class="col-lg-10">
-                                    <asp:TextBox ID="txtDate" runat="server" CssClass="form-control"></asp:TextBox>
+                                    <asp:TextBox ID="txtDate" runat="server" Text="{{mail.DeliverOn}}" CssClass="form-control"></asp:TextBox>
                                 </div>
                             </div>
                             <div class="form-group">
@@ -85,24 +86,24 @@
             }
             $("#form1").submit(function (e) {
                 // get id user if is login
-
+                var _idEmail = angular.element(document.querySelector('[ng-controller="editCtrl"]')).scope().mail.ID;
                 var _email = $('#tbEmail').val();
                 var _Subject = $('#tbSubject').val();
                 var _Letter = $('#tbLetter').val();
                 var _DeliverOn = $('#txtDate').val();
                 var _ViewStatus = $("[id*=rbtList] input:checked").val();
-                var url = "addEmail"; // the script where you handle the form input.
-
+                var url = "updateMail"; // the script where you handle the form input.
+                
                 $.ajax({
                     type: "POST",
                     url: url,
-                    data: { EmailTo: _email, Subject: _Subject, Letter: _Letter, DeliverOn: _DeliverOn, ViewStatus: _ViewStatus, userEmail: _UserName }, // serializes the form's elements.
+                    data: { ID: _idEmail, EmailTo: _email, Subject: _Subject, Letter: _Letter, DeliverOn: _DeliverOn, ViewStatus: _ViewStatus, userEmail: _UserName }, // serializes the form's elements.
                     success: function (data) {
-                        alert("A letter is stored!"); // show response from the php script.
-                        window.location.href = "index.aspx";
+                        alert("A letter is changed!"); // show response from the php script.
+                        window.location.href = "manager.aspx";
                     },
                     error: function (error) {
-                        alert("Error: Can not store you letter!");
+                        alert("Error: Can not change you letter!");
                     }
                 });
 
@@ -117,8 +118,17 @@
                 });
             });
         </script>
+        <script type="text/javascript">
+            'use strict';
+            managerApp.controller('editCtrl', function ($scope, myService, $http, $window) {
+                $scope.mail = myService.get();
+                if($scope.mail == {})
+                {
+                    $window.location.href = "manager.aspx";
+                }
+            });
+        </script>
     </form>
 </body>
 
 </html>
-
