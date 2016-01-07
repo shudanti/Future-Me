@@ -51,7 +51,7 @@
                                         <td>{{mail.EmailTo}}</td>
                                         <td>{{mail.Subject}}</td>
                                         <td>{{mail.Letter}}</td>
-                                        <td>{{mail.DeliverOn | date:'dd-MM-yyyy'}}</td>
+                                        <td>{{mail.DeliverOn | date:'MM/dd/yyyy'}}</td>
                                         <td>
                                             <div ng-switch on="mail.ViewStatus">
                                                 <span ng-switch-when="1">Can Edit</span>

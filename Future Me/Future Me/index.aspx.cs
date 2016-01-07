@@ -15,7 +15,7 @@ namespace Future_Me
         {
             if (!this.Page.User.Identity.IsAuthenticated)
             {
-                FormsAuthentication.RedirectToLoginPage();
+                //FormsAuthentication.RedirectToLoginPage();
             }
 
             tbSubject.Text = "A letter from " + DateTime.Now.ToLongDateString();
@@ -35,7 +35,7 @@ namespace Future_Me
             {
 
             }
-            return null;
+            return "anonymous@anonymous.com";
         }
         public void checkTopbar()
         {

@@ -66,7 +66,7 @@
                             <div class="form-group">
                                 <asp:Label ID="Label3" runat="server" Text="On date" CssClass="col-lg-2 control-label"></asp:Label>
                                 <div class="col-lg-10">
-                                    <asp:TextBox ID="txtDate" runat="server" Text="{{mail.DeliverOn}}" CssClass="form-control" require></asp:TextBox>
+                                    <asp:TextBox ID="txtDate" runat="server" Text="{{mail.DeliverOn | date:'MM/dd/yyyy' }}" CssClass="form-control" require></asp:TextBox>
                                 </div>
                             </div>
                             <div class="form-group">

@@ -69,7 +69,7 @@ namespace Future_Me
                         catch (SmtpException ex)
                         {
                             status = 3; // send error
-                            throw new ApplicationException("SmtpException has occured: " + ex.Message);
+                            //throw new ApplicationException("SmtpException has occured: " + ex.Message);
                         }
 
                         mail.Status = status;
@@ -79,7 +79,7 @@ namespace Future_Me
                 }
                 catch (Exception ex)
                 {
-                    throw ex;
+                    //throw ex;
                 }
             }
 
