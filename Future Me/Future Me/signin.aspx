@@ -82,7 +82,9 @@
         </div>
         <!--#include file="footer.aspx"-->
         <script type="text/javascript">
-            $("#myForm").submit(function (e) {
+            $("#myForm").one('submit', function (e) {
+                $(this).find('input[type="submit"]').attr("disabled", true);
+                $('#Button2').attr("disabled", true);
                 var _email = $('#email').val();
                 var _password = $('#pw1').val();
 
@@ -104,6 +106,8 @@
                         });
                     },
                     error: function (error) {
+                        $("#Button1").attr("disabled", false);
+                        $('#Button2').attr("disabled", false);
                         alert("Sign in failed!");
                     }
                 });

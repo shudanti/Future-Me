@@ -115,9 +115,9 @@
             function onFailure(error) {
                 alert(error);
             }
-            $("#form1").submit(function (e) {
+            $("#form1").one('submit', function (e) {
                 // get id user if is login
-
+                $(this).find('input[type="submit"]').attr('disabled', 'disabled');
                 var _email = $('#tbEmail').val();
                 var _Subject = $('#tbSubject').val();
                 var _Letter = $('#tbLetter').val();
@@ -135,11 +135,13 @@
                     },
                     error: function (error) {
                         alert("Error: Can not store your letter!");
+                        $("#btnSubmit").attr("disabled", false);
                     }
                 });
 
                 e.preventDefault(); // avoid to execute the actual submit of the form.
             });
+            form1
         </script>
         <script type="text/javascript">
             $(function () {

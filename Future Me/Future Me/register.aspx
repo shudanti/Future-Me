@@ -98,7 +98,9 @@
         </div>
         <!--#include file="footer.aspx"-->
         <script type="text/javascript">
-            $("#myForm").submit(function (e) {
+            $("#myForm").one('submit', function (e) {
+                $(this).find('input[type="submit"]').attr("disabled", true);
+                $('#Button2').attr("disabled", true);
                 // get id user if is login
                 //var _IDUser = ;
                 var _email = $('#email').val();
@@ -116,6 +118,8 @@
                     },
                     error: function (error) {
                         alert("Sign up failed!");
+                        $("#Button1").attr("disabled", false);
+                        $('#Button2').attr("disabled", false);
                     }
                 });
 

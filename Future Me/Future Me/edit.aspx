@@ -104,7 +104,8 @@
             function onFailure(error) {
                 alert(error);
             }
-            $("#form2").submit(function (e) {
+            $("#form2").one('submit', function (e) {
+                $(this).find('input[type="submit"]').attr('disabled', 'disabled');
                 // get id user if is login
                 var _idEmail = angular.element(document.querySelector('[ng-controller="editCtrl"]')).scope().mail.ID;
                 var _email = $('#tbEmail').val();
@@ -124,6 +125,7 @@
                     },
                     error: function (error) {
                         alert("Error: Can not change you letter!");
+                        $("#btnSubmit").attr("disabled", false);
                     }
                 });
 
