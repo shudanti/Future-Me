@@ -18,7 +18,8 @@ namespace Future_Me
                 FormsAuthentication.RedirectToLoginPage();
             }
 
-            tbSubject.Text = "A letter form " + DateTime.Now.ToLongDateString();
+            tbSubject.Text = "A letter from " + DateTime.Now.ToLongDateString();
+            checkTopbar();
         }
         [WebMethod]
         public static string getUserEmail()
@@ -35,6 +36,23 @@ namespace Future_Me
 
             }
             return null;
+        }
+        public void checkTopbar()
+        {
+            if (this.Page.User.Identity.IsAuthenticated)
+            {
+                managerLink.Visible = true;
+                signUplink.Visible = false;
+                signInlink.Visible = false;
+                signOutlink.Visible = true;
+            }
+            else
+            {
+                managerLink.Visible = false;
+                signUplink.Visible = true;
+                signInlink.Visible = true;
+                signOutlink.Visible = false;
+            }
         }
     }
 }

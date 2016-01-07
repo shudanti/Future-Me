@@ -46,6 +46,9 @@
       <HintPath>..\packages\EntityFramework.6.0.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="HtmlAgilityPack">
+      <HintPath>..\packages\HtmlAgilityPack.1.4.9\lib\Net45\HtmlAgilityPack.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.6.0.4\lib\net45\Newtonsoft.Json.dll</HintPath>
@@ -110,6 +113,7 @@
     <Content Include="header.aspx" />
     <Content Include="index.aspx" />
     <Content Include="js\javascripts.js" />
+    <Content Include="letter.aspx" />
     <Content Include="manager.aspx" />
     <Content Include="Models\DatabaseModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
@@ -127,11 +131,13 @@
     <Content Include="js\jquery.backstretch.js" />
     <Content Include="js\jquery.js" />
     <Content Include="Global.asax" />
+    <Content Include="publicletters.aspx" />
     <Content Include="register.aspx" />
     <Content Include="signin.aspx" />
+    <Content Include="topbar.html" />
     <Content Include="signinprocess.aspx" />
     <Content Include="signout.aspx" />
-    <Content Include="topbar.aspx" />
+    <Content Include="topbar1.aspx" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -151,6 +157,13 @@
     </Compile>
     <Compile Include="index.aspx.designer.cs">
       <DependentUpon>index.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="letter.aspx.cs">
+      <DependentUpon>letter.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="letter.aspx.designer.cs">
+      <DependentUpon>letter.aspx</DependentUpon>
     </Compile>
     <Compile Include="manager.aspx.cs">
       <DependentUpon>manager.aspx</DependentUpon>
@@ -178,6 +191,7 @@
     <Compile Include="Models\MAIL.cs">
       <DependentUpon>DatabaseModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\SingleLetter.cs" />
     <Compile Include="Models\sysdiagram.cs">
       <DependentUpon>DatabaseModel.tt</DependentUpon>
     </Compile>
@@ -188,6 +202,13 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="publicletters.aspx.cs">
+      <DependentUpon>publicletters.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="publicletters.aspx.designer.cs">
+      <DependentUpon>publicletters.aspx</DependentUpon>
+    </Compile>
     <Compile Include="register.aspx.cs">
       <DependentUpon>register.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

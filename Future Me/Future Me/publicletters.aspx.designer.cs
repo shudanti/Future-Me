@@ -10,16 +10,16 @@
 namespace Future_Me {
     
     
-    public partial class manager {
+    public partial class publicletters {
         
         /// <summary>
-        /// myForm control.
+        /// form1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlForm myForm;
+        protected global::System.Web.UI.HtmlControls.HtmlForm form1;
         
         /// <summary>
         /// topbar control.
@@ -65,5 +65,14 @@ namespace Future_Me {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlAnchor signOutlink;
+        
+        /// <summary>
+        /// letterContain control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl letterContain;
     }
 }

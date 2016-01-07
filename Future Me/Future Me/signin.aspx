@@ -10,7 +10,27 @@
 
 <body>
     <form id="myForm" name="myForm" runat="server">
-        <!--#include file="topbar.aspx"-->
+        <div id="custom-bootstrap-menu" class="navbar navbar-default " role="navigation">
+            <div class="container">
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="index.aspx">Email2Future</a>
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-menubuilder">
+                        <span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span>
+                    </button>
+                </div>
+                <div class="collapse navbar-collapse navbar-menubuilder">
+                    <ul class="nav navbar-nav navbar-right" id="topbar" runat="server">
+                        <li><a href="/">Home</a> </li>
+                        <li><a href="/manager.aspx" id="managerLink" runat="server">Your mail</a> </li>
+                        <li><a href="/publicletters.aspx">Public letters</a> </li>
+                        <li><a href="/register.aspx" id="signUplink" runat="server">Sign up</a> </li>
+                        <li><a href="/signin.aspx" id="signInlink" runat="server">Sign in</a> </li>
+                        <li><a href="/signout.aspx" onclick="signOut();" id="signOutlink" runat="server">Sign Out</a> </li>
+                        <%--<li><a href="#" onclick="signOut();">Sign Out</a> </li>--%>
+                    </ul>
+                </div>
+            </div>
+        </div>
         <div class="container">
             <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 text-center">
                 <div id="banner">
@@ -29,13 +49,14 @@
                                 <div class="col-lg-10">
                                     <asp:TextBox ID="email" name="email" runat="server" placeholder="Email" CssClass="form-control" 
                                         ng-model="email" ng-minlength="5" ng-maxlength="50" TextMode="Email" required></asp:TextBox>
+                                    <div ng-messages="myForm.email.$error" ng-if='myForm.email.$dirty'>
+                                      <div ng-message="required">This field is required</div>
+                                      <div ng-message="email">Your email address is invalid</div>
+                                      <div ng-message="minlength">Your field is too short</div>
+                                      <div ng-message="maxlength">Your field is too long</div>
+                                    </div>
                                 </div>
-                                <div ng-messages="myForm.email.$error" ng-if='myForm.email.$dirty'>
-                                  <div ng-message="required">This field is required</div>
-                                  <div ng-message="email">Your email address is invalid</div>
-                                  <div ng-message="minlength">Your field is too short</div>
-                                  <div ng-message="maxlength">Your field is too long</div>
-                                </div>
+                                
                             </div>
                             <div class="form-group">
                                 <asp:Label ID="Label7" runat="server" Text="Password" CssClass="col-lg-2 control-label"></asp:Label>
@@ -77,7 +98,7 @@
                             url: "signinprocess.aspx",
                             data: { Email: data.Email, ID: data.ID}, // serializes the form's elements.
                             success: function (data) {
-                                alert("Sign in succeed!");
+                                //alert("Sign in succeed!");
                                 window.location.href = "index.aspx";
                             }
                         });

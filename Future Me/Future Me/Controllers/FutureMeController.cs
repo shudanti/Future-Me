@@ -236,35 +236,48 @@ namespace Future_Me.Models
         [Route("googleSignIn")]
         public HttpResponseMessage googleSignIn([FromBody] USER userData)
         {
-            using (FutureMeProductEntities ctx = new FutureMeProductEntities())
+            var request = (HttpWebRequest)WebRequest.Create("https://www.googleapis.com/oauth2/v3/tokeninfo?id_token=" + userData.Password);
+            try
             {
-                if (userData == null)
-                    return Request.CreateResponse(HttpStatusCode.BadRequest);
-                var user = ctx.USERS.Where(x => x.Email == userData.Email).FirstOrDefault();
-                if (user == null)
+                using (WebResponse response = request.GetResponse())
                 {
-                    try
+                    using (FutureMeProductEntities ctx = new FutureMeProductEntities())
                     {
-                        USER u = new USER();
-                        u.Email = userData.Email;
-                        u.Password = userData.Password.Substring(0, 16);
-                        ctx.USERS.Add(u);
-                        ctx.SaveChanges();
-                        return Request.CreateResponse(HttpStatusCode.OK);
-                    }
-                    catch (Exception e)
-                    {
-                        return Request.CreateResponse(HttpStatusCode.BadRequest, e);
+                        if (userData == null)
+                            return Request.CreateResponse(HttpStatusCode.BadRequest);
+                        var user = ctx.USERS.Where(x => x.Email == userData.Email).FirstOrDefault();
+                        if (user == null)
+                        {
+                            try
+                            {
+                                USER u = new USER();
+                                u.Email = userData.Email;
+                                u.Password = userData.Password.Substring(0, 16);
+                                ctx.USERS.Add(u);
+                                ctx.SaveChanges();
+                                return Request.CreateResponse(HttpStatusCode.OK);
+                            }
+                            catch (Exception e)
+                            {
+                                return Request.CreateResponse(HttpStatusCode.BadRequest, e);
+                            }
+                        }
+                        else
+                        {
+                            var returnUser = new USER();
+                            returnUser.Email = user.Email;
+                            returnUser.ID = user.ID;
+                            return Request.CreateResponse(HttpStatusCode.OK, returnUser);
+                        }
                     }
                 }
-                else
-                {
-                    var returnUser = new USER();
-                    returnUser.Email = user.Email;
-                    returnUser.ID = user.ID;
-                    return Request.CreateResponse(HttpStatusCode.OK, returnUser);
-                } 
             }
+            catch (WebException e)
+            {
+                return Request.CreateResponse(HttpStatusCode.BadRequest, e);
+            }
+
+            
         }
     }
 }

@@ -27,7 +27,6 @@ function onSignIn(googleUser) {
                 url: "signinprocess.aspx",
                 data: { Email: data.Email, ID: data.ID }, // serializes the form's elements.
                 success: function (data) {
-                    alert("Sign in succeed!");
                     window.location.href = "index.aspx";
                 }
             });

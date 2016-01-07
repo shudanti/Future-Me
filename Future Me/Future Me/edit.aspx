@@ -11,8 +11,27 @@
 <body ng-controller="editCtrl">
 
     <form id="form2" name="form2" runat="server">
-        <!--#include file="topbar.aspx"-->
-        <div class="container">
+        <div id="custom-bootstrap-menu" class="navbar navbar-default " role="navigation">
+            <div class="container">
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="index.aspx">Email2Future</a>
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-menubuilder">
+                        <span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span>
+                    </button>
+                </div>
+                <div class="collapse navbar-collapse navbar-menubuilder">
+                    <ul class="nav navbar-nav navbar-right" id="topbar" runat="server">
+                        <li><a href="/">Home</a> </li>
+                        <li><a href="/manager.aspx" id="managerLink" runat="server">Your mail</a> </li>
+                        <li><a href="/publicletters.aspx">Public letters</a> </li>
+                        <li><a href="/register.aspx" id="signUplink" runat="server">Sign up</a> </li>
+                        <li><a href="/signin.aspx" id="signInlink" runat="server">Sign in</a> </li>
+                        <li><a href="/signout.aspx" onclick="signOut();" id="signOutlink" runat="server">Sign Out</a> </li>
+                        <%--<li><a href="#" onclick="signOut();">Sign Out</a> </li>--%>
+                    </ul>
+                </div>
+            </div>
+        </div>        <div class="container">
             <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 text-center">
                 <div id="banner">
                     <h1>Send emails to yourself or your friends/family in the future</h1>
