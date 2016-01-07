@@ -17,7 +17,7 @@ function onSignIn(googleUser) {
 
     var url = "googleSignIn"; // the script where you handle the form input.
     $(this).find('input[type="submit"]').attr("disabled", true);
-    $('#Button2').attr("disabled", true);
+    $('#g-signin').attr("disabled", true);
     $.ajax({
         type: "POST",
         url: url,
@@ -36,7 +36,7 @@ function onSignIn(googleUser) {
         error: function (error) {
             alert("Sign in failed!");
             $("#Button1").attr("disabled", false);
-            $('#Button2').attr("disabled", false);
+            $('#g-signin').attr("disabled", false);
         }
     });
 

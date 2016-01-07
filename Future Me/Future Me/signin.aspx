@@ -72,7 +72,7 @@
                                 <div class="col-lg-10 col-lg-offset-2">
                                     <asp:Button ID="Button1" type="submit" runat="server" CssClass="btn btn-primary" Text="Submit" />
                                     <asp:Button ID="btnCancel" runat="server" CssClass="btn btn-warning" Text="Cancel" UseSubmitBehavior="False" />  
-                                    <div class="g-signin2" data-onsuccess="onSignIn" data-theme="dark" style="float:right"></div>
+                                    <div class="g-signin2" id="g-signin" data-onsuccess="onSignIn" data-theme="dark" style="float:right"></div>
                                 </div>
                             </div>
                         </fieldset>
@@ -84,7 +84,7 @@
         <script type="text/javascript">
             $("#myForm").one('submit', function (e) {
                 $(this).find('input[type="submit"]').attr("disabled", true);
-                $('#Button2').attr("disabled", true);
+                $('#g-signin').attr("disabled", true);
                 var _email = $('#email').val();
                 var _password = $('#pw1').val();
 
@@ -107,7 +107,7 @@
                     },
                     error: function (error) {
                         $("#Button1").attr("disabled", false);
-                        $('#Button2').attr("disabled", false);
+                        $('#g-signin').attr("disabled", false);
                         alert("Sign in failed!");
                     }
                 });
